@@ -1,322 +1,519 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Académie STOOM — Technique de vente</title>
 
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Si ton ../style.css écrase le design, commente la ligne ci-dessous -->
+  <!-- <link rel="stylesheet" href="../style.css"> -->
 
-<title>Technique de vente STOOM</title>
+  <style>
+    :root{
+      --bg0:#070c18;
+      --bg1:#0a1222;
+      --line:rgba(255,255,255,.10);
+      --text:#eaf0ff;
+      --muted:#b7c3ff;
+      --muted2:#cdd7ff;
+      --accent:#4da3ff;
+      --accent2:#2bd9a8;
+      --warn:#ffcc66;
+      --bad:#ff6b6b;
+      --shadow:0 12px 30px rgba(0,0,0,.35);
+      --shadow2:0 18px 55px rgba(0,0,0,.45);
+      --r:18px;
+    }
+    *{ box-sizing:border-box; }
+    body{
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Arial;
+      color:var(--text);
+      background:
+        radial-gradient(900px 450px at 12% 10%, rgba(77,163,255,.22), transparent 60%),
+        radial-gradient(850px 420px at 88% 18%, rgba(43,217,168,.16), transparent 60%),
+        radial-gradient(900px 520px at 50% 120%, rgba(255,255,255,.06), transparent 55%),
+        linear-gradient(180deg, var(--bg0), var(--bg1));
+    }
+    a{ color:inherit; text-decoration:none; }
+    .wrap{ max-width:1100px; margin:0 auto; padding:22px; }
 
-<link rel="stylesheet" href="../style.css">
+    /* Topbar */
+    .topbar{
+      display:flex;
+      gap:12px;
+      align-items:center;
+      justify-content:space-between;
+      flex-wrap:wrap;
+      margin-bottom:14px;
+    }
+    .crumbs{
+      display:flex;
+      gap:10px;
+      align-items:center;
+      color:rgba(183,195,255,.85);
+      font-size:13px;
+    }
+    .crumbs a{
+      border:1px solid var(--line);
+      background:rgba(255,255,255,.04);
+      padding:8px 10px;
+      border-radius:12px;
+    }
+    .crumbs a:hover{ background:rgba(255,255,255,.06); }
 
+    .btn{
+      border:1px solid rgba(77,163,255,.35);
+      background:rgba(77,163,255,.10);
+      color:var(--text);
+      padding:10px 12px;
+      border-radius:14px;
+      font-weight:750;
+      font-size:13px;
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      cursor:pointer;
+      transition:.18s;
+      user-select:none;
+    }
+    .btn:hover{
+      transform:translateY(-1px);
+      background:rgba(77,163,255,.16);
+      box-shadow:0 14px 30px rgba(0,0,0,.25);
+    }
+    .btn.secondary{
+      border-color:var(--line);
+      background:rgba(255,255,255,.04);
+      font-weight:650;
+    }
+    .btn.secondary:hover{ background:rgba(255,255,255,.06); }
+
+    /* Hero */
+    .hero{
+      border:1px solid var(--line);
+      background: linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.03));
+      border-radius:calc(var(--r) + 6px);
+      padding:18px;
+      box-shadow:var(--shadow);
+      overflow:hidden;
+      position:relative;
+    }
+    .hero::before{
+      content:"";
+      position:absolute;
+      inset:-2px;
+      background:
+        radial-gradient(600px 240px at 15% 0%, rgba(77,163,255,.25), transparent 60%),
+        radial-gradient(520px 220px at 90% 30%, rgba(43,217,168,.18), transparent 60%);
+      pointer-events:none;
+      opacity:.8;
+    }
+    .hero > *{ position:relative; }
+    .kicker{
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      color:var(--muted2);
+      font-size:13px;
+      margin-bottom:10px;
+    }
+    .dot{
+      width:10px;height:10px;border-radius:50%;
+      background:var(--accent);
+      box-shadow:0 0 0 4px rgba(77,163,255,.16);
+    }
+    h1{ margin:0; font-size:24px; letter-spacing:.2px; line-height:1.15; }
+    .sub{ margin:10px 0 0 0; color:var(--muted); font-size:14px; line-height:1.6; max-width:90ch; }
+
+    .pillRow{ display:flex; gap:8px; flex-wrap:wrap; margin-top:10px; }
+    .pill{
+      font-size:12px;
+      color:rgba(234,240,255,.92);
+      border:1px solid rgba(255,255,255,.12);
+      background:rgba(0,0,0,.12);
+      padding:6px 10px;
+      border-radius:999px;
+      display:inline-flex;
+      gap:8px;
+      align-items:center;
+    }
+    .pDot{
+      width:8px;height:8px;border-radius:50%;
+      background:var(--accent2);
+      box-shadow:0 0 0 4px rgba(43,217,168,.12);
+    }
+
+    /* Layout */
+    .layout{
+      margin-top:14px;
+      display:grid;
+      grid-template-columns: 1.35fr .65fr;
+      gap:14px;
+      align-items:start;
+    }
+    .panel{
+      border:1px solid var(--line);
+      background:linear-gradient(180deg, rgba(255,255,255,.07), rgba(255,255,255,.03));
+      border-radius:var(--r);
+      box-shadow:var(--shadow);
+      overflow:hidden;
+    }
+    .panelHead{
+      padding:14px 14px 10px 14px;
+      border-left:4px solid var(--accent);
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:10px;
+      flex-wrap:wrap;
+    }
+    .panelHead h2{ margin:0; font-size:15px; letter-spacing:.2px; }
+    .panelBody{
+      padding:0 14px 14px 14px;
+      color:var(--muted2);
+      font-size:14px;
+      line-height:1.75;
+    }
+
+    .panelBody p{ margin:10px 0; }
+    .panelBody ul{ margin:8px 0 12px 18px; padding:0; }
+    .panelBody li{ margin:7px 0; }
+    .sectionTitle{
+      margin:14px 0 6px 0;
+      color:#fff;
+      font-weight:850;
+      font-size:13px;
+      letter-spacing:.2px;
+    }
+
+    .callout{
+      border:1px solid rgba(43,217,168,.25);
+      background:rgba(43,217,168,.08);
+      border-radius:14px;
+      padding:12px;
+      margin:12px 0;
+      color:rgba(234,240,255,.95);
+    }
+    .warn{
+      border:1px solid rgba(255,204,102,.25);
+      background:rgba(255,204,102,.08);
+      border-radius:14px;
+      padding:12px;
+      margin:12px 0;
+      color:rgba(234,240,255,.95);
+    }
+    .danger{
+      border:1px solid rgba(255,107,107,.25);
+      background:rgba(255,107,107,.08);
+      border-radius:14px;
+      padding:12px;
+      margin:12px 0;
+      color:rgba(234,240,255,.95);
+    }
+
+    details{
+      border:1px solid rgba(255,255,255,.10);
+      background:rgba(0,0,0,.10);
+      border-radius:14px;
+      margin:10px 0;
+      overflow:hidden;
+    }
+    summary{
+      cursor:pointer;
+      list-style:none;
+      padding:12px 12px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:12px;
+      user-select:none;
+    }
+    summary::-webkit-details-marker{ display:none; }
+    .sumLeft{ min-width:0; }
+    .sumTitle{ font-weight:850; font-size:13px; color:#fff; line-height:1.25; }
+    .sumSub{ font-size:12px; color:rgba(183,195,255,.85); margin-top:4px; line-height:1.35; }
+    .chev{
+      width:32px;height:32px;border-radius:12px;
+      display:grid;place-items:center;
+      border:1px solid rgba(255,255,255,.12);
+      background:rgba(255,255,255,.04);
+      flex:0 0 auto;
+    }
+    details[open] .chev{
+      background:rgba(77,163,255,.12);
+      border-color:rgba(77,163,255,.35);
+    }
+    .dBody{ padding:0 12px 12px 12px; }
+
+    .check{
+      list-style:none;
+      margin:10px 0 0 0;
+      padding:0;
+    }
+    .check li{
+      margin:10px 0;
+      padding-left:26px;
+      position:relative;
+    }
+    .check li::before{
+      content:"✓";
+      position:absolute;
+      left:0;
+      top:0;
+      color:var(--accent2);
+      font-weight:900;
+    }
+
+    .quote{
+      border:1px solid rgba(255,255,255,.12);
+      background:rgba(255,255,255,.04);
+      border-radius:14px;
+      padding:12px;
+      margin:10px 0;
+      color:rgba(234,240,255,.95);
+      font-size:13px;
+      line-height:1.6;
+    }
+    .quote strong{ color:#fff; }
+
+    footer{
+      margin:18px 0 6px 0;
+      text-align:center;
+      color:rgba(183,195,255,.75);
+      font-size:12px;
+      line-height:1.5;
+    }
+
+    @media (max-width:900px){
+      .layout{ grid-template-columns: 1fr; }
+    }
+    @media (max-width:600px){
+      .wrap{ padding:12px; }
+      h1{ font-size:20px; }
+      .sub{ font-size:13px; }
+      .btn{ width:100%; justify-content:center; }
+      .topbar{ gap:10px; }
+    }
+  </style>
 </head>
 
 <body>
-
-<section class="modules">
-
-
-<div class="card">
-
-<h2>Le rôle du vendeur chez STOOM</h2>
-
-<p>
-
-Dans une boutique spécialisée comme STOOM, le vendeur n’est pas simplement là pour vendre un produit.
-
-Il accompagne un fumeur dans une transition importante : le passage de la cigarette traditionnelle à la cigarette électronique.
-
-Cette transition peut représenter un changement important pour le client.  
-Le vendeur doit donc adopter une posture professionnelle basée sur l’écoute, la pédagogie et l’accompagnement.
-
-Un bon conseil peut permettre à un fumeur d’arrêter durablement la cigarette.
-
-À l’inverse, un mauvais conseil peut entraîner une mauvaise expérience et provoquer un retour vers le tabac.
-
-Le vendeur STOOM doit donc être attentif, patient et précis dans ses explications.
-
-</p>
-
-</div>
-
-
-
-<div class="card">
-
-<h2>La méthode de vente STOOM</h2>
-
-<p>
-
-La vente en boutique suit une logique simple et structurée.
-
-1 Accueillir le client  
-2 Comprendre son profil de fumeur  
-3 Identifier ses attentes  
-4 Proposer une solution adaptée  
-5 Expliquer le fonctionnement du matériel  
-6 Proposer les consommables nécessaires  
-7 Mettre en place un suivi client  
-
-Cette méthode permet d'accompagner correctement chaque client et d'éviter les erreurs de conseil.
-
-</p>
-
-</div>
-
-
-
-<div class="card">
-
-<h2>L'accueil du client</h2>
-
-<p>
-
-L'accueil est la première étape de la relation avec le client.
-
-Une bonne première impression est essentielle.
-
-Le vendeur doit saluer le client avec simplicité et se montrer disponible.
-
-Une question simple permet de démarrer la conversation :
-
-Bonjour, vous connaissez déjà la cigarette électronique ou vous souhaitez découvrir ?
-
-Cette question permet immédiatement d'adapter le discours selon que le client soit débutant ou déjà vapoteur.
-
-</p>
-
-</div>
-
-
-
-<div class="card">
-
-<h2>La découverte du client</h2>
-
-<p>
-
-Avant de proposer un matériel ou un liquide, il est indispensable de comprendre la situation du client.
-
-Le vendeur doit poser plusieurs questions :
-
-Combien de cigarettes fumez-vous par jour ?
-
-Quel type de cigarettes fumez-vous ?
-
-Cigarettes industrielles ou roulées ?
-
-Depuis combien de temps fumez-vous ?
-
-Avez-vous déjà essayé la cigarette électronique ?
-
-Ces questions permettent d'évaluer le niveau de dépendance à la nicotine et les attentes du client.
-
-</p>
-
-</div>
-
-
-
-<div class="card">
-
-<h2>Comprendre les attentes du client</h2>
-
-<p>
-
-Chaque client possède des attentes différentes.
-
-Certains souhaitent arrêter complètement de fumer.
-
-D'autres souhaitent simplement réduire leur consommation de cigarettes.
-
-Certains recherchent une solution simple et discrète.
-
-D'autres sont attirés par une production de vapeur plus importante.
-
-Le vendeur doit identifier ces attentes afin de proposer une solution adaptée.
-
-</p>
-
-</div>
-
-
-
-<div class="card">
-
-<h2>Proposer une solution cohérente</h2>
-
-<p>
-
-Une fois l'analyse du client réalisée, le vendeur peut proposer un matériel adapté.
-
-Le matériel doit être cohérent avec :
-
-le type de tirage recherché
-
-le taux de nicotine conseillé
-
-les habitudes du client
-
-Il est important d'expliquer au client pourquoi ce matériel est conseillé.
-
-Lorsque le client comprend la logique du conseil, la confiance s'installe naturellement.
-
-</p>
-
-</div>
-
-
-
-<div class="card">
-
-<h2>Expliquer le fonctionnement du matériel</h2>
-
-<p>
-
-Avant que le client quitte le magasin, le vendeur doit expliquer le fonctionnement de la cigarette électronique.
-
-Il est important de montrer :
-
-comment remplir le réservoir
-
-comment changer la résistance
-
-comment recharger la batterie
-
-comment utiliser le bouton si nécessaire
-
-Ces explications permettent d'éviter de nombreux problèmes lors des premiers jours d'utilisation.
-
-</p>
-
-</div>
-
-
-
-<div class="card">
-
-<h2>Proposer les consommables</h2>
-
-<p>
-
-La cigarette électronique nécessite des consommables.
-
-Les résistances doivent être remplacées régulièrement.
-
-Les liquides doivent être renouvelés.
-
-Il est donc important de proposer au client :
-
-des résistances supplémentaires
-
-plusieurs flacons de e-liquide
-
-En moyenne, dix flacons de dix millilitres correspondent à la consommation d'un paquet de cigarettes par jour.
-
-Cette information permet au client de mieux comprendre ses besoins.
-
-</p>
-
-</div>
-
-
-
-<div class="card">
-
-<h2>Le suivi personnalisé STOOM</h2>
-
-<p>
-
-Chez STOOM, nous proposons un service de suivi personnalisé.
-
-Une semaine après l'achat, le client peut bénéficier d'un rendez-vous téléphonique afin de faire le point sur son expérience.
-
-Ce suivi permet de vérifier :
-
-si le matériel fonctionne correctement
-
-si le taux de nicotine est adapté
-
-si le client rencontre des difficultés
-
-Ce service permet d'accompagner le client dans sa transition vers la cigarette électronique et de répondre à ses questions.
-
-</p>
-
-</div>
-
-
-
-<div class="card">
-
-<h2>Demander un avis Google</h2>
-
-<p>
-
-Les avis Google sont très importants pour la visibilité du magasin.
-
-De nombreux nouveaux clients choisissent une boutique en consultant les avis laissés par d'autres clients.
-
-Si l'expérience du client s'est bien passée, il est possible de lui proposer de laisser un avis.
-
-Par exemple :
-
-Si vous êtes satisfait de votre expérience, n'hésitez pas à nous laisser un avis Google, cela nous aide beaucoup.
-
-Cette demande doit rester simple et naturelle.
-
-</p>
-
-</div>
-
-
-
-<div class="card">
-
-<h2>Fidéliser le client</h2>
-
-<p>
-
-Un client satisfait reviendra régulièrement au magasin.
-
-Le vendeur doit rester disponible pour répondre aux questions et accompagner l'évolution du client.
-
-Les goûts peuvent évoluer avec le temps.
-
-Certains clients souhaitent également réduire progressivement leur taux de nicotine.
-
-La relation client est un élément essentiel dans la réussite de la transition vers la cigarette électronique.
-
-</p>
-
-</div>
-
-
-
-<div class="card">
-
-<h2>Erreurs fréquentes</h2>
-
-<p>
-
-Certaines erreurs sont fréquentes chez les vendeurs débutants.
-
-Proposer un produit sans poser de questions.
-
-Conseiller un taux de nicotine trop faible.
-
-Proposer un matériel trop puissant pour un débutant.
-
-Ne pas expliquer le fonctionnement du matériel.
-
-Une vente réussie repose toujours sur l'écoute, l'analyse et l'accompagnement du client.
-
-</p>
-
-</div>
-
-
-</section>
-
+  <div class="wrap">
+
+    <div class="topbar">
+      <div class="crumbs">
+        <a href="../index.html">← Accueil</a>
+        <span>•</span>
+        <span>Module</span>
+      </div>
+      <a class="btn secondary" href="quiz.html">Aller au quiz</a>
+    </div>
+
+    <header class="hero">
+      <div class="kicker"><span class="dot"></span>Académie STOOM • Module</div>
+      <h1>Technique de vente STOOM</h1>
+      <p class="sub">
+        Chez STOOM, le vendeur n’est pas “un pousse-produit”. C’est un conseiller.
+        Objectif : une solution cohérente, compréhensible, et un client qui réussit sa transition.
+      </p>
+      <div class="pillRow">
+        <span class="pill"><span class="pDot"></span>Écoute</span>
+        <span class="pill">Diagnostic</span>
+        <span class="pill">Cohérence</span>
+        <span class="pill">Suivi</span>
+      </div>
+    </header>
+
+    <main class="layout">
+
+      <!-- CONTENU -->
+      <section class="panel">
+        <div class="panelHead">
+          <h2>La méthode de vente STOOM</h2>
+        </div>
+        <div class="panelBody">
+
+          <div class="callout">
+            <strong>Trame STOOM (7 étapes)</strong><br>
+            1) Accueillir • 2) Découvrir • 3) Clarifier l’objectif • 4) Proposer •
+            5) Expliquer • 6) Sécuriser (consommables) • 7) Suivre
+          </div>
+
+          <div class="sectionTitle">1) Accueil (ouvrir la discussion)</div>
+          <div class="quote">
+            <strong>Phrase simple :</strong><br>
+            “Bonjour ! Vous connaissez déjà la cigarette électronique ou vous souhaitez découvrir ?”
+          </div>
+          <ul class="check">
+            <li>sourire + disponibilité</li>
+            <li>ton calme, pas pressé</li>
+            <li>objectif : mettre le client à l’aise</li>
+          </ul>
+
+          <div class="sectionTitle">2) Découverte (profil fumeur)</div>
+          <details open>
+            <summary>
+              <div class="sumLeft">
+                <div class="sumTitle">Les questions incontournables</div>
+                <div class="sumSub">Sans ça, tu conseilles “au hasard”</div>
+              </div>
+              <div class="chev">⌄</div>
+            </summary>
+            <div class="dBody">
+              <ul class="check">
+                <li>Combien de cigarettes par jour ?</li>
+                <li>Industrielles ou roulées ?</li>
+                <li>Moments clés : matin / après repas / stress ?</li>
+                <li>Déjà essayé la vape ? Qu’est-ce qui n’allait pas ?</li>
+                <li>Objectif : arrêter ou réduire ?</li>
+              </ul>
+            </div>
+          </details>
+
+          <div class="sectionTitle">3) Clarifier l’objectif et les attentes</div>
+          <p>Chaque client n’a pas la même demande :</p>
+          <ul>
+            <li>arrêt total</li>
+            <li>réduction</li>
+            <li>discret / simple</li>
+            <li>plus de vapeur</li>
+          </ul>
+          <div class="warn">
+            <strong>Règle STOOM :</strong> on choisit d’abord une expérience qui “marche”, pas un modèle “qui fait envie”.
+          </div>
+
+          <div class="sectionTitle">4) Proposer une solution cohérente</div>
+          <p>La solution doit être cohérente avec :</p>
+          <ul class="check">
+            <li>le tirage (MTL/RDL/DL)</li>
+            <li>le dosage de nicotine</li>
+            <li>les habitudes (pauses, matin, stress)</li>
+            <li>les contraintes (budget, simplicité, discrétion)</li>
+          </ul>
+          <div class="quote">
+            <strong>Phrase confiance :</strong><br>
+            “Je vous propose ça pour une raison simple : tirage + nicotine + matériel sont cohérents,
+            donc vous aurez moins de manque et moins de galères.”
+          </div>
+
+          <div class="sectionTitle">5) Expliquer (sinon le SAV explose)</div>
+          <details>
+            <summary>
+              <div class="sumLeft">
+                <div class="sumTitle">Les 4 points à montrer avant qu’il parte</div>
+                <div class="sumSub">En 60 secondes, tu évites 5 retours</div>
+              </div>
+              <div class="chev">⌄</div>
+            </summary>
+            <div class="dBody">
+              <ul class="check">
+                <li>remplir le réservoir / cartouche</li>
+                <li>amorçage (attendre + petites bouffées)</li>
+                <li>réglage puissance (si applicable)</li>
+                <li>recharge + conseils simples</li>
+              </ul>
+            </div>
+          </details>
+
+          <div class="sectionTitle">6) Sécuriser (consommables & autonomie)</div>
+          <div class="callout">
+            <strong>Repère simple :</strong><br>
+            <strong>10 flacons de 10 ml ≈ consommation moyenne d’un fumeur de 20 cigarettes/jour.</strong>
+          </div>
+          <p>À proposer au client :</p>
+          <ul class="check">
+            <li>résistances de rechange</li>
+            <li>plusieurs flacons (éviter la panne)</li>
+            <li>deux saveurs si hésitation (sécurise l’adhésion)</li>
+          </ul>
+
+          <details>
+            <summary>
+              <div class="sumLeft">
+                <div class="sumTitle">Offres Flavour Power (si tu veux les rappeler)</div>
+                <div class="sumSub">Simple et propre</div>
+              </div>
+              <div class="chev">⌄</div>
+            </summary>
+            <div class="dBody">
+              <ul>
+                <li><strong>10 + 1 offert</strong> (flacons 10 ml)</li>
+                <li><strong>15 + 2 offerts</strong> (flacons 10 ml)</li>
+              </ul>
+              <div class="warn">
+                Toujours présenter comme un bonus, pas comme une pression.
+              </div>
+            </div>
+          </details>
+
+          <div class="sectionTitle">7) Suivi personnalisé STOOM</div>
+          <div class="quote">
+            <strong>Phrase simple :</strong><br>
+            “Si vous voulez, on fait un point dans une semaine : nicotine, sensations, éventuels réglages.
+            Comme ça on s’assure que tout se passe bien.”
+          </div>
+          <ul class="check">
+            <li>vérifier le dosage</li>
+            <li>prévenir les erreurs (amorce / watts)</li>
+            <li>ajuster la solution</li>
+          </ul>
+
+          <div class="sectionTitle">Avis Google (quand tout s’est bien passé)</div>
+          <div class="quote">
+            <strong>Phrase naturelle :</strong><br>
+            “Si vous êtes satisfait, un avis Google nous aide énormément. Merci beaucoup.”
+          </div>
+
+          <div class="sectionTitle">Erreurs fréquentes (vendeur débutant)</div>
+          <div class="danger">
+            <ul>
+              <li>conseiller sans poser de questions</li>
+              <li>nicotine trop faible “par peur”</li>
+              <li>matériel trop puissant pour un débutant</li>
+              <li>pas d’explication (amorce / réglages)</li>
+            </ul>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- SIDEBAR -->
+      <aside class="panel">
+        <div class="panelHead">
+          <h2>Cheat sheet vendeur (ultra terrain)</h2>
+        </div>
+        <div class="panelBody">
+
+          <div class="callout">
+            <strong>But :</strong> éviter le manque → éviter la rechute.
+          </div>
+
+          <div class="sectionTitle">Mini trame en 20 secondes</div>
+          <ul class="check">
+            <li>“Vous fumez combien / jour ?”</li>
+            <li>“Plutôt sensation cigarette ou plus de vapeur ?”</li>
+            <li>“Le matin / après repas / stress : c’est quand le plus dur ?”</li>
+            <li>Proposition cohérente + explication</li>
+          </ul>
+
+          <div class="warn" style="margin-top:12px;">
+            <strong>Rappel :</strong> nicotine élevée = matériel peu puissant (souvent MTL).<br>
+            Nicotine basse = matériel peut être plus puissant.
+          </div>
+
+          <a class="btn" href="sav.html" style="width:100%; justify-content:center; margin-top:12px;">
+            Module suivant : SAV →
+          </a>
+        </div>
+      </aside>
+
+    </main>
+
+    <footer>
+      Académie STOOM — Module Technique de vente • Support interne
+    </footer>
+
+  </div>
 </body>
 </html>
