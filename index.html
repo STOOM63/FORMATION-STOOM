@@ -574,16 +574,24 @@
 
     </section>
 
-    <section class="badge">
-      <div>
-        <h2>Certification vendeur STOOM</h2>
-        <p>
-          Une fois les modules consultés, le vendeur passe le quiz final.
-          Objectif : <strong>16 / 20</strong> minimum pour obtenir la certification interne.
-        </p>
-      </div>
-      <div class="score">🎯 Seuil : 16/20</div>
-    </section>
+  <section class="badge" id="certifBadge">
+  <div>
+    <h2 id="certifTitle">Certification vendeur STOOM</h2>
+
+    <p id="certifDesc">
+      Une fois les modules consultés, le vendeur passe le quiz final.
+      Objectif : <strong>16 / 20</strong> minimum pour obtenir la certification interne.
+    </p>
+
+    <div id="certifActions" style="display:none; margin-top:12px; gap:10px; flex-wrap:wrap;">
+      <a class="btn" href="modules/quiz.html">Voir / Repasser le quiz</a>
+      <button class="btn secondary" type="button" id="btnPrintCertif">Imprimer le certificat</button>
+      <button class="btn secondary" type="button" id="btnClearCertif">Retirer l’affichage</button>
+    </div>
+  </div>
+
+  <div class="score" id="certifScoreBox">🎯 Seuil : 16/20</div>
+</section>
 
     <footer>
       Formation interne STOOM — Support pédagogique destiné aux vendeurs<br/>
@@ -620,5 +628,67 @@
       window.scrollTo({ top: list.offsetTop - 10, behavior: "smooth" });
     });
   </script>
+<script>
+  // Affichage certification sur la page d'accueil
+  (function(){
+    const title = document.getElementById("certifTitle");
+    const desc = document.getElementById("certifDesc");
+    const scoreBox = document.getElementById("certifScoreBox");
+    const actions = document.getElementById("certifActions");
+
+    const btnPrint = document.getElementById("btnPrintCertif");
+    const btnClear = document.getElementById("btnClearCertif");
+
+    function loadCertif(){
+      const raw = localStorage.getItem("certifSTOOM_OK");
+      if(!raw) return null;
+      try { return JSON.parse(raw); } catch(e){ return null; }
+    }
+
+    const c = loadCertif();
+
+    if(c && c.vendeur && typeof c.score === "number" && c.date){
+      // Mode "certifié"
+      title.textContent = "Certification obtenue ✅";
+      desc.innerHTML = `
+        <strong>${escapeHtml(c.vendeur)}</strong> est certifié STOOM.<br>
+        Score : <strong>${c.score} / 20</strong> • Date : <strong>${escapeHtml(c.date)}</strong>
+      `;
+
+      scoreBox.textContent = "🏅 Certifié";
+      scoreBox.style.borderColor = "rgba(43,217,168,.30)";
+      scoreBox.style.background = "rgba(43,217,168,.10)";
+
+      actions.style.display = "flex";
+
+      // Imprimer : on ouvre le quiz dans un nouvel onglet et on lance print
+      // (le quiz a déjà un mode print certificate)
+      btnPrint.addEventListener("click", () => {
+        const w = window.open("modules/quiz.html", "_blank");
+        if(!w) return;
+        // Dès que ça charge, on tente d’imprimer
+        w.addEventListener("load", () => {
+          try { w.print(); } catch(e){}
+        });
+      });
+
+      // Retirer l'affichage
+      btnClear.addEventListener("click", () => {
+        localStorage.removeItem("certifSTOOM_OK");
+        location.reload();
+      });
+    }
+
+    function escapeHtml(str){
+      return String(str)
+        .replaceAll("&","&amp;")
+        .replaceAll("<","&lt;")
+        .replaceAll(">","&gt;")
+        .replaceAll('"',"&quot;")
+        .replaceAll("'","&#039;");
+    }
+  })();
+</script>
+  
 </body>
 </html>
