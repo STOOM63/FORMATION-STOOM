@@ -1,24 +1,136 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
 
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<title>Formation STOOM</title>
+<title>Académie STOOM | Formation vendeur</title>
 
 <link rel="stylesheet" href="style.css">
 
+<style>
+
+body{
+font-family:Arial, sans-serif;
+margin:0;
+background:#f5f7fb;
+}
+
+header{
+background:#0a1222;
+color:white;
+padding:40px 20px;
+text-align:center;
+}
+
+header h1{
+margin:0;
+font-size:34px;
+}
+
+header p{
+margin-top:10px;
+opacity:0.9;
+}
+
+.container{
+max-width:1100px;
+margin:auto;
+padding:30px;
+}
+
+.modules{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+gap:20px;
+}
+
+.card{
+
+background:white;
+border-radius:10px;
+padding:22px;
+box-shadow:0 6px 14px rgba(0,0,0,0.08);
+text-decoration:none;
+color:#111;
+transition:0.2s;
+
+}
+
+.card:hover{
+transform:translateY(-4px);
+}
+
+.card h2{
+margin-top:0;
+font-size:20px;
+}
+
+.badge{
+
+margin-top:40px;
+padding:25px;
+background:white;
+border-radius:10px;
+text-align:center;
+box-shadow:0 6px 14px rgba(0,0,0,0.08);
+
+}
+
+.badge h2{
+margin-top:0;
+}
+
+footer{
+
+margin-top:50px;
+padding:20px;
+text-align:center;
+font-size:14px;
+color:#666;
+
+}
+
+</style>
+
 </head>
+
 
 <body>
 
 <header>
 
-<h1>STOOM Academy</h1>
-<p>Portail de formation vendeur</p>
+<h1>Académie STOOM</h1>
+
+<p>Formation interne pour les vendeurs STOOM</p>
 
 </header>
+
+
+<div class="container">
+
+
+<section>
+
+<h2>Bienvenue dans la formation vendeur STOOM</h2>
+
+<p>
+
+Cette formation permet aux vendeurs STOOM de maîtriser les bases de la cigarette électronique,
+le conseil client, la vente et la gestion du service après-vente.
+
+L'objectif est d'assurer un accompagnement de qualité pour les clients souhaitant réduire ou arrêter le tabac.
+
+Chaque module doit être consulté attentivement avant de passer le quiz de validation.
+
+</p>
+
+</section>
+
+
+<br>
 
 
 <section class="modules">
@@ -27,18 +139,20 @@
 
 <h2>Présentation STOOM</h2>
 
-<p>Valeurs, mission et rôle du vendeur</p>
+<p>Valeurs du magasin et rôle du vendeur</p>
 
 </a>
+
 
 
 <a class="card" href="modules/vape.html">
 
-<h2>Comprendre la Vape</h2>
+<h2>Comprendre la vape</h2>
 
-<p>Fonctionnement et composants</p>
+<p>Fonctionnement de la cigarette électronique</p>
 
 </a>
+
 
 
 <a class="card" href="modules/tirages.html">
@@ -50,33 +164,38 @@
 </a>
 
 
+
 <a class="card" href="modules/nicotine.html">
 
 <h2>Nicotine</h2>
 
-<p>Dépendance et sevrage tabagique</p>
+<p>Dépendance et dosage</p>
 
 </a>
+
 
 
 <a class="card" href="modules/liquides.html">
 
 <h2>E-liquides</h2>
 
-<p>PG VG arômes et Flavour Power</p>
+<p>PG VG arômes et saveurs</p>
 
 </a>
+
 
 
 <a class="card" href="modules/materiel.html">
 
-<h2>Choisir le matériel</h2>
+<h2>Matériel</h2>
 
-<p>Adapter matériel et nicotine</p>
+<p>Choisir la bonne cigarette électronique</p>
 
 </a>
 
-  <a class="card" href="modules/analyse-client.html">
+
+
+<a class="card" href="modules/analyse-client.html">
 
 <h2>Analyse client</h2>
 
@@ -84,24 +203,74 @@
 
 </a>
 
+
+
 <a class="card" href="modules/vente.html">
 
 <h2>Technique de vente</h2>
 
-<p>Trame de vente STOOM</p>
+<p>Méthode de vente STOOM</p>
 
 </a>
+
 
 
 <a class="card" href="modules/sav.html">
 
 <h2>SAV</h2>
 
-<p>Résolution des problèmes clients</p>
+<p>Diagnostic et gestion des problèmes</p>
+
+</a>
+
+
+
+<a class="card" href="modules/erreurs-clients.html">
+
+<h2>Erreurs fréquentes</h2>
+
+<p>Problèmes courants des vapoteurs</p>
+
+</a>
+
+
+
+<a class="card" href="modules/quiz.html">
+
+<h2>Quiz & Certification</h2>
+
+<p>Validation des connaissances vendeur</p>
 
 </a>
 
 </section>
+
+
+<div class="badge">
+
+<h2>Certification vendeur STOOM</h2>
+
+<p>
+
+Une fois les modules consultés, le vendeur peut passer le quiz final.
+
+Un score de <strong>16 / 20</strong> permet d'obtenir la certification interne vendeur STOOM.
+
+</p>
+
+</div>
+
+
+</div>
+
+
+<footer>
+
+Formation interne STOOM  
+Support pédagogique destiné aux vendeurs
+
+</footer>
+
 
 </body>
 </html>
