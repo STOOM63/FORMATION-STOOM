@@ -38,21 +38,13 @@
     a{ color:inherit; text-decoration:none; }
     .wrap{ max-width:1100px; margin:0 auto; padding:22px; }
 
-    /* Topbar */
     .topbar{
-      display:flex;
-      gap:12px;
-      align-items:center;
-      justify-content:space-between;
-      flex-wrap:wrap;
-      margin-bottom:14px;
+      display:flex; gap:12px; align-items:center; justify-content:space-between;
+      flex-wrap:wrap; margin-bottom:14px;
     }
     .crumbs{
-      display:flex;
-      gap:10px;
-      align-items:center;
-      color:rgba(183,195,255,.85);
-      font-size:13px;
+      display:flex; gap:10px; align-items:center;
+      color:rgba(183,195,255,.85); font-size:13px;
     }
     .crumbs a{
       border:1px solid var(--line);
@@ -95,7 +87,6 @@
       box-shadow:none;
     }
 
-    /* Hero */
     .hero{
       border:1px solid var(--line);
       background: linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.03));
@@ -107,8 +98,7 @@
     }
     .hero::before{
       content:"";
-      position:absolute;
-      inset:-2px;
+      position:absolute; inset:-2px;
       background:
         radial-gradient(600px 240px at 15% 0%, rgba(77,163,255,.25), transparent 60%),
         radial-gradient(520px 220px at 90% 30%, rgba(43,217,168,.18), transparent 60%);
@@ -117,12 +107,8 @@
     }
     .hero > *{ position:relative; }
     .kicker{
-      display:inline-flex;
-      align-items:center;
-      gap:10px;
-      color:var(--muted2);
-      font-size:13px;
-      margin-bottom:10px;
+      display:inline-flex; align-items:center; gap:10px;
+      color:var(--muted2); font-size:13px; margin-bottom:10px;
     }
     .dot{
       width:10px;height:10px;border-radius:50%;
@@ -130,9 +116,14 @@
       box-shadow:0 0 0 4px rgba(77,163,255,.16);
     }
     h1{ margin:0; font-size:24px; letter-spacing:.2px; line-height:1.15; }
-    .sub{ margin:10px 0 0 0; color:var(--muted); font-size:14px; line-height:1.6; max-width:80ch; }
+    .sub{
+      margin:10px 0 0 0;
+      color:var(--muted);
+      font-size:14px;
+      line-height:1.6;
+      max-width:85ch;
+    }
 
-    /* Panels */
     .grid{
       margin-top:14px;
       display:grid;
@@ -164,13 +155,8 @@
       line-height:1.75;
     }
 
-    /* Progress */
     .progressWrap{
-      display:flex;
-      gap:10px;
-      align-items:center;
-      width:100%;
-      margin-top:8px;
+      display:flex; gap:10px; align-items:center; width:100%; margin-top:8px;
     }
     .bar{
       flex:1;
@@ -193,7 +179,6 @@
       white-space:nowrap;
     }
 
-    /* Form */
     .field{
       display:grid;
       gap:6px;
@@ -216,7 +201,6 @@
       box-shadow:0 0 0 4px rgba(77,163,255,.12);
     }
 
-    /* Questions */
     .qCard{
       border:1px solid rgba(255,255,255,.10);
       background:rgba(0,0,0,.10);
@@ -275,21 +259,6 @@
       font-size:13px;
     }
 
-    /* After correction styles */
-    .opt.good{
-      border-color:rgba(43,217,168,.35);
-      background:rgba(43,217,168,.10);
-    }
-    .opt.bad{
-      border-color:rgba(255,107,107,.35);
-      background:rgba(255,107,107,.10);
-    }
-    .note{
-      margin-top:10px;
-      font-size:12px;
-      color:rgba(183,195,255,.88);
-    }
-
     .resultBox{
       border:1px solid rgba(255,255,255,.12);
       background:rgba(255,255,255,.04);
@@ -323,7 +292,6 @@
       font-weight:800;
     }
 
-    /* Certificate */
     .cert{
       margin-top:14px;
       border:1px solid rgba(77,163,255,.35);
@@ -332,9 +300,7 @@
       overflow:hidden;
       box-shadow:var(--shadow2);
     }
-    .certInner{
-      padding:18px;
-    }
+    .certInner{ padding:18px; }
     .certKicker{
       color:rgba(183,195,255,.9);
       font-size:12px;
@@ -370,6 +336,23 @@
       flex-wrap:wrap;
       color:rgba(183,195,255,.85);
       font-size:12px;
+    }
+
+    .callout{
+      border:1px solid rgba(43,217,168,.25);
+      background:rgba(43,217,168,.08);
+      border-radius:14px;
+      padding:12px;
+      margin:12px 0;
+      color:rgba(234,240,255,.95);
+    }
+    .warn{
+      border:1px solid rgba(255,204,102,.25);
+      background:rgba(255,204,102,.08);
+      border-radius:14px;
+      padding:12px;
+      margin:12px 0;
+      color:rgba(234,240,255,.95);
     }
 
     /* Print (certificate only) */
@@ -432,7 +415,7 @@
       <div class="kicker"><span class="dot"></span>Académie STOOM • Certification</div>
       <h1>Certification Vendeur STOOM</h1>
       <p class="sub">
-        Ce quiz valide les connaissances nécessaires pour conseiller correctement un client en boutique STOOM.
+        Quiz “terrain” : les réponses sont volontairement proches et plausibles.
         <strong>Score requis : 16/20.</strong>
       </p>
       <div class="progressWrap">
@@ -448,13 +431,17 @@
       <section class="panel">
         <div class="panelHead">
           <h2>Questions</h2>
-          <span style="font-size:12px;color:rgba(183,195,255,.85)">20 questions • QCM</span>
+          <span style="font-size:12px;color:rgba(183,195,255,.85)">20 questions • Niveau avancé</span>
         </div>
         <div class="panelBody">
 
           <div class="field">
             <label for="vendeur">Nom du vendeur</label>
             <input type="text" id="vendeur" placeholder="Ex : Noémie" autocomplete="name" />
+          </div>
+
+          <div class="callout">
+            <strong>Consigne :</strong> une seule réponse par question. Pas de correction affichée après validation.
           </div>
 
           <div id="questions"></div>
@@ -476,12 +463,11 @@
           <div id="certificat"></div>
 
           <div class="noPrint" style="margin-top:12px; display:flex; gap:10px; flex-wrap:wrap;">
-            <button class="btn secondary" type="button" id="btnShowAnswers">Afficher la correction</button>
             <button class="btn" type="button" id="btnPrint" disabled>Imprimer le certificat</button>
           </div>
 
-          <div class="small" style="margin-top:12px;">
-            Astuce : si un client “manque”, ce n’est pas le moment de jouer au héros → on ajuste dosage / tirage / matériel.
+          <div class="warn" style="margin-top:12px;">
+            <strong>Rappel STOOM :</strong> objectif = éviter le manque et la rechute. On ajuste dosage / tirage / matériel.
           </div>
         </div>
       </aside>
@@ -494,68 +480,79 @@
   </div>
 
 <script>
-  // [question, [answers], correctIndex]
-  const questions = [
-    ["Un client fume environ 20 cigarettes par jour. Quel matériel est généralement conseillé ?",
-      ["Pod ou matériel MTL", "Matériel DL puissant", "Dripper reconstructible"], 0
-    ],
-    ["Pourquoi un matériel puissant avec nicotine élevée peut être désagréable ?",
-      ["Hit trop fort", "Batterie lente", "Liquide froid"], 0
-    ],
-    ["Quel est le rôle principal de la nicotine ?",
-      ["Éviter le manque", "Créer la vapeur", "Refroidir la résistance"], 0
-    ],
-    ["Pourquoi amorcer une résistance ?",
-      ["Imbiber le coton", "Augmenter la puissance", "Nettoyer la batterie"], 0
-    ],
-    ["Cause fréquente du goût de brûlé ?",
-      ["Résistance mal amorcée", "Airflow ouvert", "Liquide froid"], 0
-    ],
-    ["Pourquoi un liquide riche en VG peut poser problème ?",
-      ["Liquide plus épais", "Trop de nicotine", "Batterie faible"], 0
-    ],
-    ["Avantage du tirage MTL ?",
-      ["Proche cigarette", "Plus de vapeur", "Moins de batterie"], 0
-    ],
-    ["Pourquoi poser des questions au client ?",
-      ["Comprendre les besoins", "Gagner du temps", "Augmenter le prix"], 0
-    ],
-    ["Rôle de l’airflow ?",
-      ["Régler le tirage", "Augmenter la nicotine", "Refroidir la batterie"], 0
-    ],
-    ["Durée de vie moyenne d’une résistance ?",
-      ["1 à 2 semaines", "6 mois", "2 ans"], 0
-    ],
-    ["Pourquoi expliquer le matériel au client ?",
-      ["Éviter les erreurs", "Réduire la vente", "Augmenter la puissance"], 0
-    ],
-    ["Pourquoi proposer plusieurs liquides ?",
-      ["Consommation régulière", "Vider le stock", "Décoration"], 0
-    ],
-    ["Objectif du suivi STOOM ?",
-      ["Accompagner le client", "Promotion", "Paiement"], 0
-    ],
-    ["Nicotine trop faible provoque ?",
-      ["Manque", "Fuite", "Chauffe batterie"], 0
-    ],
-    ["Première chose face à un problème client ?",
-      ["Écouter", "Remplacer direct", "Refuser le SAV"], 0
-    ],
-    ["Airflow trop fermé provoque ?",
-      ["Tirage serré", "Perte nicotine", "Batterie chaude"], 0
-    ],
-    ["Pourquoi travailler avec Flavour Power ?",
-      ["Fabricant auvergnat qualité", "Prix bas", "Marketing"], 0
-    ],
-    ["Pourquoi demander un avis Google ?",
-      ["Visibilité boutique", "Augmenter nicotine", "Réduire prix"], 0
-    ],
-    ["Client vapote mais fume encore ?",
-      ["Encourager et ajuster", "Arrêter la vape", "Ignorer"], 0
-    ],
-    ["Rôle du vendeur STOOM ?",
-      ["Conseiller le client", "Vendre cher", "Finir vite"], 0
-    ]
+  // ------------------------------------------------------------
+  // QUIZ "NIVEAU TERRAIN" : réponses plausibles + pas de correction UI
+  // NOTE : techniquement, tout ce qui est côté client peut être inspecté.
+  // Ici on rend la consultation moins évidente et on supprime la correction.
+  // ------------------------------------------------------------
+
+  // Encodage léger des bonnes réponses (obfuscation basique)
+  // On stocke un "hash" simple : (indexBonneRep + 3) * 7
+  // => ça n'empêche pas un dev, mais évite les "0" en clair.
+  const key = (i) => (i + 3) * 7;
+  const unkey = (k) => (k / 7) - 3;
+
+  // [question, [answers], keyedCorrectIndex]
+  const Q = [
+    ["Un client fume 20 cigarettes/j, veut une sensation proche cigarette et ne veut pas de gros nuages. Tu priorises quoi ?",
+      ["MTL + puissance faible + nicotine adaptée", "DL + puissance élevée + nicotine élevée", "RDL + puissance élevée + nicotine faible"], key(0)],
+
+    ["Client : “Je prends 0 mg parce que la nicotine c’est dangereux.” Ta réponse la plus juste chez STOOM ?",
+      ["Expliquer que le risque majeur vient de la combustion, et que la nicotine sert à éviter le manque (sevrage progressif)", "Accepter 0 mg et compenser en augmentant fortement la puissance", "Proposer 0 mg mais uniquement en DL pour “remplacer” la nicotine"], key(0)],
+
+    ["Un débutant tousse avec un liquide en sels de nicotine. Quelle cause est la plus probable ?",
+      ["Dosage trop haut / fréquence trop élevée / matériel pas adapté au tirage", "La VG est trop élevée donc la nicotine “pique”", "La résistance est trop vieille donc la nicotine devient irritante"], key(0)],
+
+    ["Goût de brûlé dès la première utilisation sur résistance neuve. Le diagnostic le plus cohérent ?",
+      ["Résistance pas amorcée / coton sec / puissance trop haute au départ", "Airflow trop ouvert, ça “brûle” plus vite", "Liquide trop frais (menthol) qui brûle le coton"], key(0)],
+
+    ["Un client revient : “Ça fuit dans la poche.” Quelle première vérif terrain est la plus pertinente ?",
+      ["Montage résistance / joints / fermeture + façon de remplir + stockage (airflow ouvert) + condensation", "Changer directement la batterie", "Baisser la nicotine pour réduire les fuites"], key(0)],
+
+    ["Un client veut “plus de vapeur” mais garde 12 mg en base nicotine. Quelle approche STOOM est la plus cohérente ?",
+      ["Expliquer que plus de vapeur = généralement dosage plus bas + matériel plus puissant (progressif)", "Augmenter la puissance sans toucher le dosage", "Passer en sels de nicotine 20 mg pour “supporter” la vapeur"], key(0)],
+
+    ["Quelle phrase décrit le mieux la différence MTL vs DL ?",
+      ["MTL = serré, proche cigarette ; DL = aérien, direct poumon, plus de vapeur", "MTL = plus de vapeur ; DL = plus de hit", "MTL = uniquement sels ; DL = uniquement base"], key(0)],
+
+    ["Tu dois choisir un liquide pour un pod MTL à petite résistance. Quel PG/VG est souvent le plus sécurisant ?",
+      ["Plus riche en PG (plus fluide) pour bien alimenter le coton", "Plus riche en VG (plus épais) pour éviter les fuites", "100% VG pour protéger la résistance"], key(0)],
+
+    ["Client : “Je vape mais je fume encore 5 cigarettes.” La réaction STOOM la plus intelligente ?",
+      ["Dédramatiser, analyser quand il fume, ajuster nicotine / tirage / matériel", "Dire d’arrêter la vape, ça ne marche pas", "Monter la puissance au maximum pour le dégoûter de la cigarette"], key(0)],
+
+    ["Quel combo est le plus risqué pour un débutant ?",
+      ["Matériel DL puissant + nicotine élevée", "Pod MTL + nicotine adaptée", "RDL modéré + nicotine modérée"], key(0)],
+
+    ["Le client dit : “Ça ne tire plus.” Quelle cause est très fréquente ?",
+      ["Résistance encrassée / coton saturé / airflow obstrué", "Le liquide a perdu sa nicotine", "Le PG a évaporé, donc la résistance ne marche plus"], key(0)],
+
+    ["Quel discours est le plus pro en vente STOOM ?",
+      ["On propose une solution cohérente et on explique le pourquoi", "On vend d’abord le matériel le plus cher, puis on ajuste", "On évite de poser des questions pour ne pas “mettre mal à l’aise”"], key(0)],
+
+    ["Un client veut passer de 6 mg à 0 mg “d’un coup”. Réponse STOOM attendue ?",
+      ["Conseiller une baisse progressive (alternance 6/3 ou 6/0) pour éviter la rechute", "Valider 0 mg immédiatement, c’est toujours mieux", "Passer en DL puissant pour compenser le manque"], key(0)],
+
+    ["Pour limiter les retours SAV, le plus important à montrer avant qu’il parte est…",
+      ["Amorçage + remplissage + réglage basique (watts/airflow si applicable)", "Seulement la recharge USB", "Uniquement comment ouvrir la boîte"], key(0)],
+
+    ["Un liquide riche en VG sur un petit pod MTL peut surtout provoquer…",
+      ["Alimentation difficile → dry hit / résistance qui grille vite", "Plus de hit et trop de nicotine", "Une batterie qui se décharge deux fois plus vite"], key(0)],
+
+    ["Le client veut une vape “très serrée” mais choisit un clearo DL. Ta meilleure réponse ?",
+      ["Expliquer l’incohérence et réorienter vers du MTL (ou matériel adapté)", "Fermer l’airflow au max, ça devient MTL", "Augmenter la nicotine pour que ça tire plus serré"], key(0)],
+
+    ["Tu proposes des résistances de rechange : la justification la plus crédible ?",
+      ["C’est un consommable : éviter la panne et assurer une expérience stable", "Ça augmente l’autonomie de la batterie", "Ça améliore la couleur de la vapeur"], key(0)],
+
+    ["Repère STOOM : 10 flacons de 10 ml correspondent en moyenne à…",
+      ["La conso d’un fumeur ~20 cigarettes/jour", "La conso d’un fumeur ~5 cigarettes/jour", "La conso d’un fumeur ~40 cigarettes/jour"], key(0)],
+
+    ["Quand demander un avis Google, c’est le plus propre quand…",
+      ["Le client est satisfait + échange naturel, sans insister", "Dès l’entrée en magasin", "Uniquement si le panier est élevé"], key(0)],
+
+    ["Face à un client qui revient énervé, la première action pro est…",
+      ["Écouter, reformuler, diagnostiquer avant de conclure", "Accuser l’utilisateur d’avoir mal fait", "Remplacer systématiquement sans vérifier"], key(0)]
   ];
 
   const $ = (id) => document.getElementById(id);
@@ -564,7 +561,6 @@
   const btnValidate = $("btnValidate");
   const btnReset = $("btnReset");
   const btnPrint = $("btnPrint");
-  const btnShowAnswers = $("btnShowAnswers");
 
   const barFill = $("barFill");
   const pctTxt = $("pctTxt");
@@ -574,94 +570,66 @@
   const lastTxt = $("lastTxt");
   const certifZone = $("certificat");
 
-  let correctedVisible = false;
+  function shuffle(arr){
+    // Fisher-Yates (in place)
+    for(let i = arr.length - 1; i > 0; i--){
+      const j = Math.floor(Math.random() * (i + 1));
+      [arr[i], arr[j]] = [arr[j], arr[i]];
+    }
+    return arr;
+  }
+
+  // On mélange l’ordre des questions à chaque chargement (empêche le “par coeur Q1=…”)
+  const quiz = shuffle(Q.map((q, idx) => ({ idx, q })));
 
   function renderQuiz(){
     zone.innerHTML = "";
-    questions.forEach((q, i) => {
+    quiz.forEach((item, n) => {
+      const [question, answers] = item.q;
+
       const qEl = document.createElement("div");
       qEl.className = "qCard";
       qEl.innerHTML = `
         <div class="qTop">
-          <p class="qTitle">${q[0]}</p>
-          <div class="qIdx">Q${i+1}/20</div>
+          <p class="qTitle">${question}</p>
+          <div class="qIdx">Q${n+1}/20</div>
         </div>
-        <div class="answers" role="group" aria-label="question ${i+1}">
-          ${q[1].map((rep, j) => `
-            <label class="opt" data-q="${i}" data-a="${j}">
-              <input type="radio" name="q${i}" value="${j}" />
+        <div class="answers" role="group" aria-label="question ${n+1}">
+          ${answers.map((rep, j) => `
+            <label class="opt">
+              <input type="radio" name="q${n}" value="${j}" />
               <span>${rep}</span>
             </label>
           `).join("")}
         </div>
-        <div class="note" id="note${i}" style="display:none;"></div>
       `;
       zone.appendChild(qEl);
     });
 
-    // Track progress on any change
     zone.addEventListener("change", updateProgress, { once:false });
     updateProgress();
   }
 
   function updateProgress(){
-    const answered = questions.reduce((acc, _, i) => {
-      const r = document.querySelector(`input[name="q${i}"]:checked`);
+    const answered = quiz.reduce((acc, _, n) => {
+      const r = document.querySelector(`input[name="q${n}"]:checked`);
       return acc + (r ? 1 : 0);
     }, 0);
-    const pct = Math.round((answered / questions.length) * 100);
+    const pct = Math.round((answered / quiz.length) * 100);
     barFill.style.width = pct + "%";
     pctTxt.textContent = `${pct}% répondu`;
   }
 
   function calcScore(){
     let score = 0;
-    const picks = [];
-    questions.forEach((q, i) => {
-      const r = document.querySelector(`input[name="q${i}"]:checked`);
+    quiz.forEach((item, n) => {
+      const correctKeyed = item.q[2];
+      const correct = unkey(correctKeyed); // index réel
+      const r = document.querySelector(`input[name="q${n}"]:checked`);
       const val = r ? parseInt(r.value, 10) : null;
-      picks.push(val);
-      if (val !== null && val === q[2]) score++;
+      if(val !== null && val === correct) score++;
     });
-    return { score, picks };
-  }
-
-  function showCorrection(picks){
-    correctedVisible = true;
-    questions.forEach((q, i) => {
-      const correct = q[2];
-      const chosen = picks[i];
-
-      const opts = document.querySelectorAll(`.opt[data-q="${i}"]`);
-      opts.forEach(o => {
-        o.classList.remove("good", "bad");
-        const a = parseInt(o.getAttribute("data-a"), 10);
-
-        if (a === correct) o.classList.add("good");
-        if (chosen !== null && a === chosen && chosen !== correct) o.classList.add("bad");
-      });
-
-      const note = $("note"+i);
-      note.style.display = "block";
-      if (chosen === null) {
-        note.textContent = "Non répondu • Bonne réponse : " + q[1][correct];
-      } else if (chosen === correct) {
-        note.textContent = "Bonne réponse ✅";
-      } else {
-        note.textContent = "Faux ❌ • Bonne réponse : " + q[1][correct];
-      }
-    });
-  }
-
-  function hideCorrection(){
-    correctedVisible = false;
-    questions.forEach((q, i) => {
-      const opts = document.querySelectorAll(`.opt[data-q="${i}"]`);
-      opts.forEach(o => o.classList.remove("good", "bad"));
-      const note = $("note"+i);
-      note.style.display = "none";
-      note.textContent = "";
-    });
+    return score;
   }
 
   function saveLast(vendeur, score, date){
@@ -675,6 +643,15 @@
       const data = JSON.parse(saved);
       lastTxt.innerHTML = `Dernier score enregistré : <strong>${data.score} / 20</strong> — ${data.vendeur} (${data.date})`;
     }catch(e){}
+  }
+
+  function escapeHtml(str){
+    return String(str)
+      .replaceAll("&","&amp;")
+      .replaceAll("<","&lt;")
+      .replaceAll(">","&gt;")
+      .replaceAll('"',"&quot;")
+      .replaceAll("'","&#039;");
   }
 
   function buildCertificate(vendeur, score, date){
@@ -691,27 +668,18 @@
           <div class="badge">🏅 Vendeur certifié STOOM</div>
           <div class="certLine">
             <span>Direction STOOM</span>
-            <span>Objectif : conseil + cohérence + suivi</span>
+            <span>Conseil • Cohérence • Suivi</span>
           </div>
         </div>
       </div>
     `;
   }
 
-  function escapeHtml(str){
-    return String(str)
-      .replaceAll("&","&amp;")
-      .replaceAll("<","&lt;")
-      .replaceAll(">","&gt;")
-      .replaceAll('"',"&quot;")
-      .replaceAll("'","&#039;");
-  }
-
   function validate(){
     const vendeur = ($("vendeur").value || "").trim() || "Vendeur";
-    const { score, picks } = calcScore();
-
+    const score = calcScore();
     const date = new Date().toLocaleDateString("fr-FR");
+
     scoreTxt.textContent = `Score : ${score} / 20`;
 
     saveLast(vendeur, score, date);
@@ -728,18 +696,32 @@
       statusTxt.innerHTML = `❌ Score insuffisant. Revois les modules et retente.`;
     }
 
-    // After validate, show correction by default (best UX)
-    showCorrection(picks);
+    // Pas de correction affichée
+    // On peut aussi bloquer la modification après validation :
+    lockQuiz();
+  }
+
+  function lockQuiz(){
+    const inputs = zone.querySelectorAll("input[type='radio'], input[type='text']");
+    inputs.forEach(i => i.disabled = true);
+    btnValidate.disabled = true;
+  }
+
+  function unlockQuiz(){
+    const inputs = zone.querySelectorAll("input[type='radio']");
+    inputs.forEach(i => i.disabled = false);
+    btnValidate.disabled = false;
   }
 
   function resetAll(){
-    // clear answers
-    questions.forEach((_, i) => {
-      const checked = document.querySelector(`input[name="q${i}"]:checked`);
+    // Déverrouille
+    unlockQuiz();
+    // Efface réponses
+    quiz.forEach((_, n) => {
+      const checked = document.querySelector(`input[name="q${n}"]:checked`);
       if(checked) checked.checked = false;
     });
     $("vendeur").value = "";
-    hideCorrection();
     updateProgress();
 
     scoreTxt.textContent = "Score : —";
@@ -748,24 +730,10 @@
     btnPrint.disabled = true;
   }
 
-  // Events
   btnValidate.addEventListener("click", validate);
   btnReset.addEventListener("click", resetAll);
-
-  btnShowAnswers.addEventListener("click", () => {
-    const { picks } = calcScore();
-    if(correctedVisible){
-      hideCorrection();
-      btnShowAnswers.textContent = "Afficher la correction";
-    }else{
-      showCorrection(picks);
-      btnShowAnswers.textContent = "Masquer la correction";
-    }
-  });
-
   btnPrint.addEventListener("click", () => window.print());
 
-  // Init
   renderQuiz();
   loadLast();
 </script>
