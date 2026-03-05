@@ -1,252 +1,773 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Académie STOOM — Certification vendeur</title>
 
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Si ton ../style.css écrase le design, commente la ligne ci-dessous -->
+  <!-- <link rel="stylesheet" href="../style.css"> -->
 
-<title>Certification Vendeur STOOM</title>
+  <style>
+    :root{
+      --bg0:#070c18;
+      --bg1:#0a1222;
+      --line:rgba(255,255,255,.10);
+      --text:#eaf0ff;
+      --muted:#b7c3ff;
+      --muted2:#cdd7ff;
+      --accent:#4da3ff;
+      --accent2:#2bd9a8;
+      --warn:#ffcc66;
+      --bad:#ff6b6b;
+      --shadow:0 12px 30px rgba(0,0,0,.35);
+      --shadow2:0 18px 55px rgba(0,0,0,.45);
+      --r:18px;
+    }
+    *{ box-sizing:border-box; }
+    body{
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Arial;
+      color:var(--text);
+      background:
+        radial-gradient(900px 450px at 12% 10%, rgba(77,163,255,.22), transparent 60%),
+        radial-gradient(850px 420px at 88% 18%, rgba(43,217,168,.16), transparent 60%),
+        radial-gradient(900px 520px at 50% 120%, rgba(255,255,255,.06), transparent 55%),
+        linear-gradient(180deg, var(--bg0), var(--bg1));
+    }
+    a{ color:inherit; text-decoration:none; }
+    .wrap{ max-width:1100px; margin:0 auto; padding:22px; }
 
-<link rel="stylesheet" href="../style.css">
+    /* Topbar */
+    .topbar{
+      display:flex;
+      gap:12px;
+      align-items:center;
+      justify-content:space-between;
+      flex-wrap:wrap;
+      margin-bottom:14px;
+    }
+    .crumbs{
+      display:flex;
+      gap:10px;
+      align-items:center;
+      color:rgba(183,195,255,.85);
+      font-size:13px;
+    }
+    .crumbs a{
+      border:1px solid var(--line);
+      background:rgba(255,255,255,.04);
+      padding:8px 10px;
+      border-radius:12px;
+    }
+    .crumbs a:hover{ background:rgba(255,255,255,.06); }
 
-<style>
+    .btn{
+      border:1px solid rgba(77,163,255,.35);
+      background:rgba(77,163,255,.10);
+      color:var(--text);
+      padding:10px 12px;
+      border-radius:14px;
+      font-weight:750;
+      font-size:13px;
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      cursor:pointer;
+      transition:.18s;
+      user-select:none;
+    }
+    .btn:hover{
+      transform:translateY(-1px);
+      background:rgba(77,163,255,.16);
+      box-shadow:0 14px 30px rgba(0,0,0,.25);
+    }
+    .btn.secondary{
+      border-color:var(--line);
+      background:rgba(255,255,255,.04);
+      font-weight:650;
+    }
+    .btn.secondary:hover{ background:rgba(255,255,255,.06); }
+    .btn:disabled{
+      opacity:.55;
+      cursor:not-allowed;
+      transform:none;
+      box-shadow:none;
+    }
 
-.quiz{
-max-width:900px;
-margin:auto;
-}
+    /* Hero */
+    .hero{
+      border:1px solid var(--line);
+      background: linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.03));
+      border-radius:calc(var(--r) + 6px);
+      padding:18px;
+      box-shadow:var(--shadow);
+      overflow:hidden;
+      position:relative;
+    }
+    .hero::before{
+      content:"";
+      position:absolute;
+      inset:-2px;
+      background:
+        radial-gradient(600px 240px at 15% 0%, rgba(77,163,255,.25), transparent 60%),
+        radial-gradient(520px 220px at 90% 30%, rgba(43,217,168,.18), transparent 60%);
+      pointer-events:none;
+      opacity:.8;
+    }
+    .hero > *{ position:relative; }
+    .kicker{
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      color:var(--muted2);
+      font-size:13px;
+      margin-bottom:10px;
+    }
+    .dot{
+      width:10px;height:10px;border-radius:50%;
+      background:var(--accent);
+      box-shadow:0 0 0 4px rgba(77,163,255,.16);
+    }
+    h1{ margin:0; font-size:24px; letter-spacing:.2px; line-height:1.15; }
+    .sub{ margin:10px 0 0 0; color:var(--muted); font-size:14px; line-height:1.6; max-width:80ch; }
 
-.question{
-margin-bottom:28px;
-padding:18px;
-border-radius:8px;
-background:#f6f8fb;
-}
+    /* Panels */
+    .grid{
+      margin-top:14px;
+      display:grid;
+      grid-template-columns: 1.35fr .65fr;
+      gap:14px;
+      align-items:start;
+    }
+    .panel{
+      border:1px solid var(--line);
+      background:linear-gradient(180deg, rgba(255,255,255,.07), rgba(255,255,255,.03));
+      border-radius:var(--r);
+      box-shadow:var(--shadow);
+      overflow:hidden;
+    }
+    .panelHead{
+      padding:14px 14px 10px 14px;
+      border-left:4px solid var(--accent);
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:10px;
+      flex-wrap:wrap;
+    }
+    .panelHead h2{ margin:0; font-size:15px; letter-spacing:.2px; }
+    .panelBody{
+      padding:0 14px 14px 14px;
+      color:var(--muted2);
+      font-size:14px;
+      line-height:1.75;
+    }
 
-.question p{
-font-weight:bold;
-margin-bottom:8px;
-}
+    /* Progress */
+    .progressWrap{
+      display:flex;
+      gap:10px;
+      align-items:center;
+      width:100%;
+      margin-top:8px;
+    }
+    .bar{
+      flex:1;
+      height:10px;
+      border-radius:999px;
+      background:rgba(255,255,255,.06);
+      border:1px solid rgba(255,255,255,.10);
+      overflow:hidden;
+    }
+    .bar > div{
+      height:100%;
+      width:0%;
+      background:linear-gradient(90deg, rgba(77,163,255,.95), rgba(43,217,168,.85));
+      border-radius:999px;
+      transition:width .25s ease;
+    }
+    .pct{
+      font-size:12px;
+      color:rgba(183,195,255,.9);
+      white-space:nowrap;
+    }
 
-button{
-padding:12px 22px;
-font-size:16px;
-cursor:pointer;
-border:none;
-border-radius:6px;
-background:#1e90ff;
-color:white;
-margin-top:20px;
-}
+    /* Form */
+    .field{
+      display:grid;
+      gap:6px;
+      margin:12px 0;
+    }
+    label{ font-weight:750; color:#fff; font-size:13px; }
+    input[type="text"]{
+      width:100%;
+      padding:12px 12px;
+      border-radius:14px;
+      border:1px solid rgba(255,255,255,.12);
+      background:rgba(0,0,0,.20);
+      color:var(--text);
+      outline:none;
+      box-shadow:none;
+    }
+    input[type="text"]::placeholder{ color:rgba(183,195,255,.55); }
+    input[type="text"]:focus{
+      border-color:rgba(77,163,255,.45);
+      box-shadow:0 0 0 4px rgba(77,163,255,.12);
+    }
 
-.result{
-font-size:22px;
-margin-top:30px;
-text-align:center;
-}
+    /* Questions */
+    .qCard{
+      border:1px solid rgba(255,255,255,.10);
+      background:rgba(0,0,0,.10);
+      border-radius:16px;
+      padding:12px;
+      margin:12px 0;
+    }
+    .qTop{
+      display:flex;
+      align-items:flex-start;
+      justify-content:space-between;
+      gap:10px;
+      margin-bottom:10px;
+    }
+    .qTitle{
+      color:#fff;
+      font-weight:850;
+      font-size:13px;
+      line-height:1.35;
+      margin:0;
+    }
+    .qIdx{
+      font-size:12px;
+      color:rgba(183,195,255,.85);
+      border:1px solid rgba(255,255,255,.10);
+      background:rgba(255,255,255,.04);
+      padding:6px 10px;
+      border-radius:999px;
+      flex:0 0 auto;
+    }
 
-.certificat{
+    .answers{ display:grid; gap:8px; }
+    .opt{
+      display:flex;
+      gap:10px;
+      align-items:flex-start;
+      padding:10px 10px;
+      border:1px solid rgba(255,255,255,.10);
+      background:rgba(255,255,255,.03);
+      border-radius:14px;
+      cursor:pointer;
+      transition:.15s;
+    }
+    .opt:hover{
+      background:rgba(255,255,255,.05);
+      transform:translateY(-1px);
+    }
+    .opt input{
+      margin-top:3px;
+      accent-color: var(--accent);
+      cursor:pointer;
+    }
+    .opt span{
+      color:rgba(234,240,255,.92);
+      line-height:1.35;
+      font-size:13px;
+    }
 
-margin-top:40px;
-padding:40px;
-border:4px solid #1e90ff;
-border-radius:10px;
-text-align:center;
-background:white;
+    /* After correction styles */
+    .opt.good{
+      border-color:rgba(43,217,168,.35);
+      background:rgba(43,217,168,.10);
+    }
+    .opt.bad{
+      border-color:rgba(255,107,107,.35);
+      background:rgba(255,107,107,.10);
+    }
+    .note{
+      margin-top:10px;
+      font-size:12px;
+      color:rgba(183,195,255,.88);
+    }
 
-}
+    .resultBox{
+      border:1px solid rgba(255,255,255,.12);
+      background:rgba(255,255,255,.04);
+      border-radius:16px;
+      padding:14px;
+      margin-top:12px;
+    }
+    .bigScore{
+      font-size:22px;
+      color:#fff;
+      font-weight:900;
+      margin:0;
+    }
+    .small{
+      margin:6px 0 0 0;
+      color:rgba(183,195,255,.9);
+      font-size:13px;
+      line-height:1.5;
+    }
+    .badge{
+      margin-top:10px;
+      display:inline-flex;
+      gap:10px;
+      align-items:center;
+      border:1px solid rgba(43,217,168,.30);
+      background:rgba(43,217,168,.10);
+      padding:8px 10px;
+      border-radius:999px;
+      font-size:12px;
+      color:rgba(234,240,255,.95);
+      font-weight:800;
+    }
 
-.certificat h2{
-font-size:32px;
-margin-bottom:5px;
-}
+    /* Certificate */
+    .cert{
+      margin-top:14px;
+      border:1px solid rgba(77,163,255,.35);
+      background: linear-gradient(180deg, rgba(77,163,255,.10), rgba(255,255,255,.02));
+      border-radius:18px;
+      overflow:hidden;
+      box-shadow:var(--shadow2);
+    }
+    .certInner{
+      padding:18px;
+    }
+    .certKicker{
+      color:rgba(183,195,255,.9);
+      font-size:12px;
+      letter-spacing:.2px;
+    }
+    .certTitle{
+      margin:6px 0 0 0;
+      font-size:22px;
+      color:#fff;
+      font-weight:950;
+      line-height:1.15;
+    }
+    .certName{
+      margin:10px 0 0 0;
+      font-size:18px;
+      color:#fff;
+      font-weight:900;
+    }
+    .certMeta{
+      margin:10px 0 0 0;
+      color:rgba(183,195,255,.9);
+      font-size:13px;
+      line-height:1.6;
+    }
+    .certLine{
+      margin-top:14px;
+      border-top:1px solid rgba(255,255,255,.10);
+      padding-top:12px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:10px;
+      flex-wrap:wrap;
+      color:rgba(183,195,255,.85);
+      font-size:12px;
+    }
 
-.certificat h3{
-font-size:26px;
-margin-top:10px;
-}
+    /* Print (certificate only) */
+    @media print{
+      body{ background:#fff; color:#111; }
+      .wrap{ padding:0; max-width:none; }
+      .topbar, .hero, .panel:not(#printArea), footer, .noPrint{ display:none !important; }
+      #printArea{
+        border:none !important;
+        box-shadow:none !important;
+        background:#fff !important;
+      }
+      #printArea .cert{
+        border:2px solid #1e90ff !important;
+        background:#fff !important;
+        box-shadow:none !important;
+      }
+      #printArea *{ color:#111 !important; }
+      #printArea .badge{ border:1px solid #2bd9a8 !important; }
+    }
 
-.badge{
-font-size:22px;
-margin-top:15px;
-}
+    footer{
+      margin:18px 0 6px 0;
+      text-align:center;
+      color:rgba(183,195,255,.75);
+      font-size:12px;
+      line-height:1.5;
+    }
 
-</style>
-
+    @media (max-width:900px){
+      .grid{ grid-template-columns: 1fr; }
+    }
+    @media (max-width:600px){
+      .wrap{ padding:12px; }
+      h1{ font-size:20px; }
+      .sub{ font-size:13px; }
+      .btn{ width:100%; justify-content:center; }
+      .topbar{ gap:10px; }
+      .panelHead{ align-items:flex-start; }
+    }
+  </style>
 </head>
 
 <body>
+  <div class="wrap">
 
-<section class="modules quiz">
+    <div class="topbar">
+      <div class="crumbs">
+        <a href="../index.html">← Accueil</a>
+        <span>•</span>
+        <span>Quiz</span>
+      </div>
+      <div style="display:flex; gap:10px; flex-wrap:wrap;">
+        <button class="btn secondary noPrint" id="btnReset" type="button">Réinitialiser</button>
+        <button class="btn noPrint" id="btnValidate" type="button">Valider le quiz</button>
+      </div>
+    </div>
 
-<h1>Certification Vendeur STOOM</h1>
+    <header class="hero">
+      <div class="kicker"><span class="dot"></span>Académie STOOM • Certification</div>
+      <h1>Certification Vendeur STOOM</h1>
+      <p class="sub">
+        Ce quiz valide les connaissances nécessaires pour conseiller correctement un client en boutique STOOM.
+        <strong>Score requis : 16/20.</strong>
+      </p>
+      <div class="progressWrap">
+        <div class="bar" aria-label="progression">
+          <div id="barFill"></div>
+        </div>
+        <div class="pct" id="pctTxt">0% répondu</div>
+      </div>
+    </header>
 
-<p>Ce quiz valide les connaissances nécessaires pour conseiller correctement un client dans une boutique STOOM.</p>
+    <main class="grid">
 
-<br>
+      <section class="panel">
+        <div class="panelHead">
+          <h2>Questions</h2>
+          <span style="font-size:12px;color:rgba(183,195,255,.85)">20 questions • QCM</span>
+        </div>
+        <div class="panelBody">
 
-<label>Nom du vendeur :</label><br>
-<input type="text" id="vendeur" placeholder="Nom du vendeur">
+          <div class="field">
+            <label for="vendeur">Nom du vendeur</label>
+            <input type="text" id="vendeur" placeholder="Ex : Noémie" autocomplete="name" />
+          </div>
 
-<br><br>
+          <div id="questions"></div>
 
-<div id="questions"></div>
+        </div>
+      </section>
 
-<button onclick="calculerScore()">Valider le quiz</button>
+      <aside class="panel" id="printArea">
+        <div class="panelHead">
+          <h2>Résultat</h2>
+        </div>
+        <div class="panelBody">
+          <div class="resultBox" id="resultBox">
+            <p class="bigScore" id="scoreTxt">Score : —</p>
+            <p class="small" id="statusTxt">Réponds aux questions puis clique sur “Valider le quiz”.</p>
+            <div class="small" id="lastTxt" style="margin-top:10px;"></div>
+          </div>
 
-<div class="result" id="result"></div>
+          <div id="certificat"></div>
 
-<div id="certificat"></div>
+          <div class="noPrint" style="margin-top:12px; display:flex; gap:10px; flex-wrap:wrap;">
+            <button class="btn secondary" type="button" id="btnShowAnswers">Afficher la correction</button>
+            <button class="btn" type="button" id="btnPrint" disabled>Imprimer le certificat</button>
+          </div>
+
+          <div class="small" style="margin-top:12px;">
+            Astuce : si un client “manque”, ce n’est pas le moment de jouer au héros → on ajuste dosage / tirage / matériel.
+          </div>
+        </div>
+      </aside>
+
+    </main>
+
+    <footer>
+      Académie STOOM — Quiz Certification • Support interne
+    </footer>
+  </div>
 
 <script>
-
-const questions = [
-
-["Un client fume environ 20 cigarettes par jour. Quel matériel est généralement conseillé ?",["Pod ou matériel MTL","Matériel DL puissant","Dripper reconstructible"],0],
-
-["Pourquoi un matériel puissant avec nicotine élevée peut être désagréable ?",["Hit trop fort","Batterie lente","Liquide froid"],0],
-
-["Quel est le rôle principal de la nicotine ?",["Éviter le manque","Créer la vapeur","Refroidir la résistance"],0],
-
-["Pourquoi amorcer une résistance ?",["Imbiber le coton","Augmenter puissance","Nettoyer batterie"],0],
-
-["Cause fréquente du goût de brûlé ?",["Résistance mal amorcée","Airflow ouvert","Liquide froid"],0],
-
-["Pourquoi un liquide riche en VG peut poser problème ?",["Liquide plus épais","Trop de nicotine","Batterie faible"],0],
-
-["Avantage du tirage MTL ?",["Proche cigarette","Plus vapeur","Moins batterie"],0],
-
-["Pourquoi poser des questions au client ?",["Comprendre besoins","Gagner temps","Augmenter prix"],0],
-
-["Rôle airflow ?",["Régler tirage","Augmenter nicotine","Refroidir batterie"],0],
-
-["Durée de vie moyenne résistance ?",["1 à 2 semaines","6 mois","2 ans"],0],
-
-["Pourquoi expliquer matériel au client ?",["Éviter erreurs","Réduire vente","Augmenter puissance"],0],
-
-["Pourquoi proposer plusieurs liquides ?",["Consommation régulière","Vider stock","Décoration"],0],
-
-["Objectif du suivi STOOM ?",["Accompagner client","Promotion","Paiement"],0],
-
-["Nicotine trop faible provoque ?",["Manque","Fuite","Chauffe batterie"],0],
-
-["Première chose face à un problème client ?",["Écouter","Remplacer direct","Refuser SAV"],0],
-
-["Airflow trop fermé provoque ?",["Tirage serré","Perte nicotine","Batterie chaude"],0],
-
-["Pourquoi travailler avec Flavour Power ?",["Fabricant auvergnat qualité","Prix bas","Marketing"],0],
-
-["Pourquoi demander avis Google ?",["Visibilité boutique","Augmenter nicotine","Réduire prix"],0],
-
-["Client vapote mais fume encore ?",["Encourager et ajuster","Arrêter vape","Ignorer"],0],
-
-["Rôle du vendeur STOOM ?",["Conseiller client","Vendre cher","Finir vite"],0]
-
-]
-
-function genererQuiz(){
-
-let zone = document.getElementById("questions")
-
-questions.forEach((q,i)=>{
-
-let bloc = `<div class="question">
-<p>${i+1}. ${q[0]}</p>`
-
-q[1].forEach((rep,j)=>{
-
-bloc += `<label>
-<input type="radio" name="q${i}" value="${j}">
-${rep}
-</label><br>`
-
-})
-
-bloc += "</div>"
-
-zone.innerHTML += bloc
-
-})
-
-}
-
-genererQuiz()
-
-
-function calculerScore(){
-
-let score = 0
-
-questions.forEach((q,i)=>{
-
-let r = document.querySelector(`input[name="q${i}"]:checked`)
-
-if(r && parseInt(r.value) === q[2]) score++
-
-})
-
-let vendeur = document.getElementById("vendeur").value || "Vendeur"
-
-let date = new Date().toLocaleDateString()
-
-document.getElementById("result").innerHTML =
-`Score obtenu : <strong>${score} / 20</strong>`
-
-localStorage.setItem("certifSTOOM",
-JSON.stringify({vendeur,score,date}))
-
-if(score >= 16){
-
-document.getElementById("certificat").innerHTML =
-
-`<div class="certificat">
-
-<h2>Certification Vendeur STOOM</h2>
-
-<p>Formation interne validée</p>
-
-<h3>${vendeur}</h3>
-
-<p>Score obtenu : <strong>${score} / 20</strong></p>
-
-<p>Date : ${date}</p>
-
-<div class="badge">
-🏅 Vendeur Certifié STOOM
-</div>
-
-<br>
-
-<p>Direction STOOM</p>
-
-<br>
-
-<button onclick="window.print()">Afficher / Imprimer le certificat</button>
-
-</div>`
-
-}
-
-}
-
-window.onload = function(){
-
-let saved = localStorage.getItem("certifSTOOM")
-
-if(saved){
-
-let data = JSON.parse(saved)
-
-document.getElementById("result").innerHTML =
-"Dernier score enregistré : "+data.score+" / 20"
-
-}
-
-}
-
+  // [question, [answers], correctIndex]
+  const questions = [
+    ["Un client fume environ 20 cigarettes par jour. Quel matériel est généralement conseillé ?",
+      ["Pod ou matériel MTL", "Matériel DL puissant", "Dripper reconstructible"], 0
+    ],
+    ["Pourquoi un matériel puissant avec nicotine élevée peut être désagréable ?",
+      ["Hit trop fort", "Batterie lente", "Liquide froid"], 0
+    ],
+    ["Quel est le rôle principal de la nicotine ?",
+      ["Éviter le manque", "Créer la vapeur", "Refroidir la résistance"], 0
+    ],
+    ["Pourquoi amorcer une résistance ?",
+      ["Imbiber le coton", "Augmenter la puissance", "Nettoyer la batterie"], 0
+    ],
+    ["Cause fréquente du goût de brûlé ?",
+      ["Résistance mal amorcée", "Airflow ouvert", "Liquide froid"], 0
+    ],
+    ["Pourquoi un liquide riche en VG peut poser problème ?",
+      ["Liquide plus épais", "Trop de nicotine", "Batterie faible"], 0
+    ],
+    ["Avantage du tirage MTL ?",
+      ["Proche cigarette", "Plus de vapeur", "Moins de batterie"], 0
+    ],
+    ["Pourquoi poser des questions au client ?",
+      ["Comprendre les besoins", "Gagner du temps", "Augmenter le prix"], 0
+    ],
+    ["Rôle de l’airflow ?",
+      ["Régler le tirage", "Augmenter la nicotine", "Refroidir la batterie"], 0
+    ],
+    ["Durée de vie moyenne d’une résistance ?",
+      ["1 à 2 semaines", "6 mois", "2 ans"], 0
+    ],
+    ["Pourquoi expliquer le matériel au client ?",
+      ["Éviter les erreurs", "Réduire la vente", "Augmenter la puissance"], 0
+    ],
+    ["Pourquoi proposer plusieurs liquides ?",
+      ["Consommation régulière", "Vider le stock", "Décoration"], 0
+    ],
+    ["Objectif du suivi STOOM ?",
+      ["Accompagner le client", "Promotion", "Paiement"], 0
+    ],
+    ["Nicotine trop faible provoque ?",
+      ["Manque", "Fuite", "Chauffe batterie"], 0
+    ],
+    ["Première chose face à un problème client ?",
+      ["Écouter", "Remplacer direct", "Refuser le SAV"], 0
+    ],
+    ["Airflow trop fermé provoque ?",
+      ["Tirage serré", "Perte nicotine", "Batterie chaude"], 0
+    ],
+    ["Pourquoi travailler avec Flavour Power ?",
+      ["Fabricant auvergnat qualité", "Prix bas", "Marketing"], 0
+    ],
+    ["Pourquoi demander un avis Google ?",
+      ["Visibilité boutique", "Augmenter nicotine", "Réduire prix"], 0
+    ],
+    ["Client vapote mais fume encore ?",
+      ["Encourager et ajuster", "Arrêter la vape", "Ignorer"], 0
+    ],
+    ["Rôle du vendeur STOOM ?",
+      ["Conseiller le client", "Vendre cher", "Finir vite"], 0
+    ]
+  ];
+
+  const $ = (id) => document.getElementById(id);
+
+  const zone = $("questions");
+  const btnValidate = $("btnValidate");
+  const btnReset = $("btnReset");
+  const btnPrint = $("btnPrint");
+  const btnShowAnswers = $("btnShowAnswers");
+
+  const barFill = $("barFill");
+  const pctTxt = $("pctTxt");
+
+  const scoreTxt = $("scoreTxt");
+  const statusTxt = $("statusTxt");
+  const lastTxt = $("lastTxt");
+  const certifZone = $("certificat");
+
+  let correctedVisible = false;
+
+  function renderQuiz(){
+    zone.innerHTML = "";
+    questions.forEach((q, i) => {
+      const qEl = document.createElement("div");
+      qEl.className = "qCard";
+      qEl.innerHTML = `
+        <div class="qTop">
+          <p class="qTitle">${q[0]}</p>
+          <div class="qIdx">Q${i+1}/20</div>
+        </div>
+        <div class="answers" role="group" aria-label="question ${i+1}">
+          ${q[1].map((rep, j) => `
+            <label class="opt" data-q="${i}" data-a="${j}">
+              <input type="radio" name="q${i}" value="${j}" />
+              <span>${rep}</span>
+            </label>
+          `).join("")}
+        </div>
+        <div class="note" id="note${i}" style="display:none;"></div>
+      `;
+      zone.appendChild(qEl);
+    });
+
+    // Track progress on any change
+    zone.addEventListener("change", updateProgress, { once:false });
+    updateProgress();
+  }
+
+  function updateProgress(){
+    const answered = questions.reduce((acc, _, i) => {
+      const r = document.querySelector(`input[name="q${i}"]:checked`);
+      return acc + (r ? 1 : 0);
+    }, 0);
+    const pct = Math.round((answered / questions.length) * 100);
+    barFill.style.width = pct + "%";
+    pctTxt.textContent = `${pct}% répondu`;
+  }
+
+  function calcScore(){
+    let score = 0;
+    const picks = [];
+    questions.forEach((q, i) => {
+      const r = document.querySelector(`input[name="q${i}"]:checked`);
+      const val = r ? parseInt(r.value, 10) : null;
+      picks.push(val);
+      if (val !== null && val === q[2]) score++;
+    });
+    return { score, picks };
+  }
+
+  function showCorrection(picks){
+    correctedVisible = true;
+    questions.forEach((q, i) => {
+      const correct = q[2];
+      const chosen = picks[i];
+
+      const opts = document.querySelectorAll(`.opt[data-q="${i}"]`);
+      opts.forEach(o => {
+        o.classList.remove("good", "bad");
+        const a = parseInt(o.getAttribute("data-a"), 10);
+
+        if (a === correct) o.classList.add("good");
+        if (chosen !== null && a === chosen && chosen !== correct) o.classList.add("bad");
+      });
+
+      const note = $("note"+i);
+      note.style.display = "block";
+      if (chosen === null) {
+        note.textContent = "Non répondu • Bonne réponse : " + q[1][correct];
+      } else if (chosen === correct) {
+        note.textContent = "Bonne réponse ✅";
+      } else {
+        note.textContent = "Faux ❌ • Bonne réponse : " + q[1][correct];
+      }
+    });
+  }
+
+  function hideCorrection(){
+    correctedVisible = false;
+    questions.forEach((q, i) => {
+      const opts = document.querySelectorAll(`.opt[data-q="${i}"]`);
+      opts.forEach(o => o.classList.remove("good", "bad"));
+      const note = $("note"+i);
+      note.style.display = "none";
+      note.textContent = "";
+    });
+  }
+
+  function saveLast(vendeur, score, date){
+    localStorage.setItem("certifSTOOM", JSON.stringify({ vendeur, score, date }));
+  }
+
+  function loadLast(){
+    const saved = localStorage.getItem("certifSTOOM");
+    if(!saved) return;
+    try{
+      const data = JSON.parse(saved);
+      lastTxt.innerHTML = `Dernier score enregistré : <strong>${data.score} / 20</strong> — ${data.vendeur} (${data.date})`;
+    }catch(e){}
+  }
+
+  function buildCertificate(vendeur, score, date){
+    return `
+      <div class="cert">
+        <div class="certInner">
+          <div class="certKicker">Académie STOOM • Formation interne</div>
+          <div class="certTitle">Certification Vendeur STOOM</div>
+          <div class="certName">${escapeHtml(vendeur)}</div>
+          <div class="certMeta">
+            Score obtenu : <strong>${score} / 20</strong><br/>
+            Date : ${date}
+          </div>
+          <div class="badge">🏅 Vendeur certifié STOOM</div>
+          <div class="certLine">
+            <span>Direction STOOM</span>
+            <span>Objectif : conseil + cohérence + suivi</span>
+          </div>
+        </div>
+      </div>
+    `;
+  }
+
+  function escapeHtml(str){
+    return String(str)
+      .replaceAll("&","&amp;")
+      .replaceAll("<","&lt;")
+      .replaceAll(">","&gt;")
+      .replaceAll('"',"&quot;")
+      .replaceAll("'","&#039;");
+  }
+
+  function validate(){
+    const vendeur = ($("vendeur").value || "").trim() || "Vendeur";
+    const { score, picks } = calcScore();
+
+    const date = new Date().toLocaleDateString("fr-FR");
+    scoreTxt.textContent = `Score : ${score} / 20`;
+
+    saveLast(vendeur, score, date);
+    loadLast();
+
+    certifZone.innerHTML = "";
+    btnPrint.disabled = true;
+
+    if(score >= 16){
+      statusTxt.innerHTML = `✅ Formation validée. Certification obtenue.`;
+      certifZone.innerHTML = buildCertificate(vendeur, score, date);
+      btnPrint.disabled = false;
+    }else{
+      statusTxt.innerHTML = `❌ Score insuffisant. Revois les modules et retente.`;
+    }
+
+    // After validate, show correction by default (best UX)
+    showCorrection(picks);
+  }
+
+  function resetAll(){
+    // clear answers
+    questions.forEach((_, i) => {
+      const checked = document.querySelector(`input[name="q${i}"]:checked`);
+      if(checked) checked.checked = false;
+    });
+    $("vendeur").value = "";
+    hideCorrection();
+    updateProgress();
+
+    scoreTxt.textContent = "Score : —";
+    statusTxt.textContent = "Réponds aux questions puis clique sur “Valider le quiz”.";
+    certifZone.innerHTML = "";
+    btnPrint.disabled = true;
+  }
+
+  // Events
+  btnValidate.addEventListener("click", validate);
+  btnReset.addEventListener("click", resetAll);
+
+  btnShowAnswers.addEventListener("click", () => {
+    const { picks } = calcScore();
+    if(correctedVisible){
+      hideCorrection();
+      btnShowAnswers.textContent = "Afficher la correction";
+    }else{
+      showCorrection(picks);
+      btnShowAnswers.textContent = "Masquer la correction";
+    }
+  });
+
+  btnPrint.addEventListener("click", () => window.print());
+
+  // Init
+  renderQuiz();
+  loadLast();
 </script>
-
-</section>
-
 </body>
 </html>
