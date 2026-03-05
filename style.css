@@ -86,3 +86,28 @@ opacity:0.8;
 font-size:14px;
 
 }
+
+/* ===== MOBILE ===== */
+
+@media (max-width: 768px){
+
+.modules-grid{
+display:flex;
+flex-direction:column;
+gap:16px;
+padding:12px;
+}
+
+.module-card{
+width:100%;
+font-size:15px;
+line-height:1.5;
+padding:18px;
+}
+
+.module-card h3{
+font-size:18px;
+margin-bottom:8px;
+}
+
+}
