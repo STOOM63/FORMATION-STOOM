@@ -5,7 +5,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<title>Quiz vendeur STOOM</title>
+<title>Certification Vendeur STOOM</title>
 
 <link rel="stylesheet" href="../style.css">
 
@@ -17,38 +17,58 @@ margin:auto;
 }
 
 .question{
-margin-bottom:25px;
+margin-bottom:28px;
+padding:18px;
+border-radius:8px;
+background:#f6f8fb;
+}
+
+.question p{
+font-weight:bold;
+margin-bottom:8px;
 }
 
 button{
-padding:12px 20px;
+padding:12px 22px;
 font-size:16px;
-margin-top:20px;
 cursor:pointer;
+border:none;
+border-radius:6px;
+background:#1e90ff;
+color:white;
+margin-top:20px;
 }
 
 .result{
 font-size:22px;
 margin-top:30px;
+text-align:center;
 }
 
 .certificat{
 
 margin-top:40px;
-padding:30px;
-border:3px solid #1e90ff;
+padding:40px;
+border:4px solid #1e90ff;
+border-radius:10px;
 text-align:center;
-background:#f7fbff;
+background:white;
 
 }
 
 .certificat h2{
-font-size:28px;
-margin-bottom:10px;
+font-size:32px;
+margin-bottom:5px;
 }
 
 .certificat h3{
-font-size:24px;
+font-size:26px;
+margin-top:10px;
+}
+
+.badge{
+font-size:22px;
+margin-top:15px;
 }
 
 </style>
@@ -59,16 +79,20 @@ font-size:24px;
 
 <section class="modules quiz">
 
-<h1>Quiz vendeur STOOM</h1>
+<h1>Certification Vendeur STOOM</h1>
 
-<p>Ce quiz permet de valider les connaissances sur la vape et le conseil client en boutique STOOM.</p>
+<p>Ce quiz valide les connaissances nécessaires pour conseiller correctement un client dans une boutique STOOM.</p>
 
-<label>Nom du vendeur :</label>
+<br>
+
+<label>Nom du vendeur :</label><br>
 <input type="text" id="vendeur" placeholder="Nom du vendeur">
+
+<br><br>
 
 <div id="questions"></div>
 
-<button onclick="result()">Voir mon score</button>
+<button onclick="calculerScore()">Valider le quiz</button>
 
 <div class="result" id="result"></div>
 
@@ -78,77 +102,78 @@ font-size:24px;
 
 const questions = [
 
-["Un client fume environ 20 cigarettes par jour. Quel type de matériel est généralement conseillé pour débuter ?",["Un pod ou matériel MTL","Un matériel DL très puissant","Un dripper reconstructible"],0],
+["Un client fume environ 20 cigarettes par jour. Quel matériel est généralement conseillé ?",["Pod ou matériel MTL","Matériel DL puissant","Dripper reconstructible"],0],
 
-["Pourquoi un matériel très puissant avec un taux de nicotine élevé peut poser problème ?",["Le hit devient trop fort et désagréable","La batterie se recharge trop vite","Le liquide devient plus sucré"],0],
+["Pourquoi un matériel puissant avec nicotine élevée peut être désagréable ?",["Hit trop fort","Batterie lente","Liquide froid"],0],
 
-["Quel est le rôle principal de la nicotine dans la vape ?",["Éviter les symptômes de manque liés à l'arrêt du tabac","Produire la vapeur","Améliorer le goût du liquide"],0],
+["Quel est le rôle principal de la nicotine ?",["Éviter le manque","Créer la vapeur","Refroidir la résistance"],0],
 
-["Pourquoi doit-on amorcer une résistance neuve ?",["Pour imbiber le coton et éviter qu'il brûle","Pour augmenter la puissance","Pour refroidir la batterie"],0],
+["Pourquoi amorcer une résistance ?",["Imbiber le coton","Augmenter puissance","Nettoyer batterie"],0],
 
-["Un goût de brûlé apparaît rapidement. Quelle est la cause la plus probable ?",["Résistance mal amorcée ou usée","Airflow trop ouvert","Liquide trop froid"],0],
+["Cause fréquente du goût de brûlé ?",["Résistance mal amorcée","Airflow ouvert","Liquide froid"],0],
 
-["Quel est l'avantage principal du tirage MTL pour un fumeur ?",["Sensation proche de la cigarette","Production maximale de vapeur","Consommation maximale de liquide"],0],
+["Pourquoi un liquide riche en VG peut poser problème ?",["Liquide plus épais","Trop de nicotine","Batterie faible"],0],
 
-["Pourquoi poser plusieurs questions avant de conseiller un matériel ?",["Comprendre le profil du client","Gagner du temps","Vendre plus cher"],0],
+["Avantage du tirage MTL ?",["Proche cigarette","Plus vapeur","Moins batterie"],0],
 
-["Quel est le rôle de l'airflow ?",["Réguler la circulation d'air et le tirage","Augmenter la nicotine","Refroidir la batterie"],0],
+["Pourquoi poser des questions au client ?",["Comprendre besoins","Gagner temps","Augmenter prix"],0],
 
-["Pourquoi un liquide riche en VG peut encrasser plus vite certaines résistances ?",["Il est plus épais","Il contient plus de nicotine","Il chauffe la batterie"],0],
+["Rôle airflow ?",["Régler tirage","Augmenter nicotine","Refroidir batterie"],0],
 
-["Quelle est la durée de vie moyenne d'une résistance ?",["Quelques jours à deux semaines selon usage","Plusieurs mois","Plusieurs années"],0],
+["Durée de vie moyenne résistance ?",["1 à 2 semaines","6 mois","2 ans"],0],
 
-["Pourquoi expliquer le fonctionnement du matériel au client ?",["Éviter les erreurs d'utilisation","Réduire la vente","Augmenter la puissance"],0],
+["Pourquoi expliquer matériel au client ?",["Éviter erreurs","Réduire vente","Augmenter puissance"],0],
 
-["Pourquoi proposer plusieurs flacons de liquide lors d'un premier achat ?",["Le client en consommera régulièrement","Pour vider le stock","Pour protéger la batterie"],0],
+["Pourquoi proposer plusieurs liquides ?",["Consommation régulière","Vider stock","Décoration"],0],
 
-["Quel est l'objectif du suivi téléphonique STOOM ?",["Vérifier que la transition se passe bien","Proposer une promotion","Demander un paiement"],0],
+["Objectif du suivi STOOM ?",["Accompagner client","Promotion","Paiement"],0],
 
-["Pourquoi un taux de nicotine trop faible peut poser problème ?",["Le client ressent un manque et peut rechuter","Le liquide fuit","La batterie chauffe"],0],
+["Nicotine trop faible provoque ?",["Manque","Fuite","Chauffe batterie"],0],
 
-["Quelle est la première chose à faire lorsqu'un client revient avec un problème ?",["Écouter et diagnostiquer calmement","Remplacer immédiatement le produit","Dire que le matériel est défectueux"],0],
+["Première chose face à un problème client ?",["Écouter","Remplacer direct","Refuser SAV"],0],
 
-["Pourquoi un airflow trop fermé peut gêner certains clients ?",["Le tirage devient trop serré","La nicotine disparaît","La batterie chauffe"],0],
+["Airflow trop fermé provoque ?",["Tirage serré","Perte nicotine","Batterie chaude"],0],
 
-["Pourquoi travailler avec Flavour Power chez STOOM ?",["Fabricant auvergnat avec haute exigence qualité","Liquide le moins cher","Seul liquide disponible"],0],
+["Pourquoi travailler avec Flavour Power ?",["Fabricant auvergnat qualité","Prix bas","Marketing"],0],
 
-["Pourquoi demander un avis Google ?",["Renforcer la visibilité et la réputation du magasin","Augmenter la nicotine","Améliorer la batterie"],0],
+["Pourquoi demander avis Google ?",["Visibilité boutique","Augmenter nicotine","Réduire prix"],0],
 
-["Si un client vapote mais fume encore quelques cigarettes, que faire ?",["L'encourager et ajuster si nécessaire","Lui dire que la vape ne fonctionne pas","Lui conseiller d'arrêter la vape"],0],
+["Client vapote mais fume encore ?",["Encourager et ajuster","Arrêter vape","Ignorer"],0],
 
-["Quel est le rôle principal du vendeur STOOM ?",["Accompagner le client dans sa transition vers la vape","Vendre le produit le plus cher","Terminer la vente le plus vite possible"],0]
+["Rôle du vendeur STOOM ?",["Conseiller client","Vendre cher","Finir vite"],0]
 
-];
+]
 
-function buildQuiz(){
+function genererQuiz(){
 
-let container = document.getElementById("questions");
+let zone = document.getElementById("questions")
 
 questions.forEach((q,i)=>{
 
-let html = `<div class="question">
+let bloc = `<div class="question">
 <p>${i+1}. ${q[0]}</p>`
 
 q[1].forEach((rep,j)=>{
 
-html += `<label>
+bloc += `<label>
 <input type="radio" name="q${i}" value="${j}">
 ${rep}
 </label><br>`
 
 })
 
-html += "</div>"
+bloc += "</div>"
 
-container.innerHTML += html
+zone.innerHTML += bloc
 
 })
 
 }
 
-buildQuiz()
+genererQuiz()
 
-function result(){
+
+function calculerScore(){
 
 let score = 0
 
@@ -165,9 +190,9 @@ let vendeur = document.getElementById("vendeur").value || "Vendeur"
 let date = new Date().toLocaleDateString()
 
 document.getElementById("result").innerHTML =
-`Score : ${score} / 20`
+`Score obtenu : <strong>${score} / 20</strong>`
 
-localStorage.setItem("quizSTOOM",
+localStorage.setItem("certifSTOOM",
 JSON.stringify({vendeur,score,date}))
 
 if(score >= 16){
@@ -176,19 +201,27 @@ document.getElementById("certificat").innerHTML =
 
 `<div class="certificat">
 
-<h2>Certificat Vendeur STOOM</h2>
+<h2>Certification Vendeur STOOM</h2>
 
-<p>Ce certificat atteste que</p>
+<p>Formation interne validée</p>
 
 <h3>${vendeur}</h3>
 
-<p>a validé la formation vendeur STOOM</p>
-
-<p>Score : ${score} / 20</p>
+<p>Score obtenu : <strong>${score} / 20</strong></p>
 
 <p>Date : ${date}</p>
 
+<div class="badge">
+🏅 Vendeur Certifié STOOM
+</div>
+
+<br>
+
 <p>Direction STOOM</p>
+
+<br>
+
+<button onclick="window.print()">Afficher / Imprimer le certificat</button>
 
 </div>`
 
@@ -198,7 +231,7 @@ document.getElementById("certificat").innerHTML =
 
 window.onload = function(){
 
-let saved = localStorage.getItem("quizSTOOM")
+let saved = localStorage.getItem("certifSTOOM")
 
 if(saved){
 
