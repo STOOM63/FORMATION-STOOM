@@ -1,593 +1,1003 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Rejoignez STOOM Clermont-Ferrand | Alternance & Emploi saisonnier</title>
-  <meta name="description" content="Découvrez STOOM Clermont-Ferrand : une boutique spécialisée en cigarette électronique qui forme des alternants et saisonniers aux métiers du conseil, de la vente, de la relation client et de la gestion de boutique." />
-  <meta name="theme-color" content="#041526" />
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
-  <style>
-    :root {
-      --bg: #020912;
-      --bg-2: #06172a;
-      --panel: rgba(7, 24, 43, 0.82);
-      --panel-soft: rgba(12, 39, 68, 0.68);
-      --blue: #62c9ff;
-      --blue-2: #2697e8;
-      --white: #f7fbff;
-      --muted: #b7c7d8;
-      --line: rgba(112, 201, 255, 0.25);
-      --shadow: 0 24px 80px rgba(0, 0, 0, 0.45);
-      --radius: 26px;
-      --max: 1180px;
-    }
+<title>STOOM Clermont-Ferrand | Alternance & Emploi saisonnier</title>
 
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; }
-    body {
-      min-height: 100vh;
-      font-family: Arial, Helvetica, sans-serif;
-      color: var(--white);
-      background:
-        radial-gradient(circle at 15% 5%, rgba(98,201,255,.24), transparent 26%),
-        radial-gradient(circle at 80% 20%, rgba(38,151,232,.16), transparent 30%),
-        linear-gradient(135deg, #01050b 0%, #041526 48%, #020812 100%);
-      overflow-x: hidden;
-    }
+<meta name="description" content="Découvrez STOOM Clermont-Ferrand : une boutique moderne spécialisée dans la cigarette électronique, proposant alternance et emploi saisonnier dans un environnement professionnel et humain."/>
 
-    body::before {
-      content: "";
-      position: fixed;
-      inset: 0;
-      pointer-events: none;
-      background-image:
-        linear-gradient(rgba(255,255,255,.025) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255,255,255,.025) 1px, transparent 1px);
-      background-size: 54px 54px;
-      mask-image: linear-gradient(to bottom, rgba(0,0,0,.55), transparent 85%);
-      z-index: -1;
-    }
+<style>
 
-    a { color: inherit; text-decoration: none; }
-    img { max-width: 100%; display: block; }
-    .wrap { width: min(var(--max), calc(100% - 34px)); margin: 0 auto; }
+:root{
+  --bg:#020912;
+  --bg2:#06172a;
+  --panel:rgba(7,24,43,.82);
+  --panel2:rgba(12,39,68,.65);
+  --blue:#62c9ff;
+  --blue2:#2697e8;
+  --white:#f7fbff;
+  --muted:#b7c7d8;
+  --line:rgba(112,201,255,.25);
+  --shadow:0 24px 80px rgba(0,0,0,.45);
+  --radius:28px;
+  --max:1180px;
+}
 
-    .nav {
-      position: sticky;
-      top: 0;
-      z-index: 20;
-      backdrop-filter: blur(18px);
-      background: rgba(2, 9, 18, 0.76);
-      border-bottom: 1px solid var(--line);
-    }
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
 
-    .nav-inner {
-      min-height: 76px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 20px;
-    }
+html{
+  scroll-behavior:smooth;
+}
 
-    .brand {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      font-weight: 900;
-      letter-spacing: -1px;
-      font-size: 30px;
-    }
+body{
+  font-family:Arial, Helvetica, sans-serif;
+  background:
+    radial-gradient(circle at 10% 10%, rgba(98,201,255,.18), transparent 24%),
+    radial-gradient(circle at 85% 15%, rgba(38,151,232,.16), transparent 26%),
+    linear-gradient(135deg,#01050b 0%,#041526 50%,#020812 100%);
+  color:var(--white);
+  overflow-x:hidden;
+}
 
-    .brand .oo {
-      display: inline-flex;
-      gap: 2px;
-      color: var(--blue);
-    }
+body::before{
+  content:"";
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+  background-image:
+  linear-gradient(rgba(255,255,255,.025) 1px, transparent 1px),
+  linear-gradient(90deg, rgba(255,255,255,.025) 1px, transparent 1px);
+  background-size:54px 54px;
+  mask-image:linear-gradient(to bottom, rgba(0,0,0,.55), transparent 85%);
+  z-index:-1;
+}
 
-    .brand small {
-      display: block;
-      font-size: 10px;
-      font-weight: 700;
-      letter-spacing: 2px;
-      color: var(--muted);
-      text-transform: uppercase;
-      margin-top: 2px;
-    }
+a{
+  color:inherit;
+  text-decoration:none;
+}
 
-    .links {
-      display: flex;
-      align-items: center;
-      gap: 22px;
-      color: var(--muted);
-      font-size: 14px;
-      font-weight: 700;
-    }
+img{
+  max-width:100%;
+  display:block;
+}
 
-    .links a:hover { color: var(--blue); }
+.wrap{
+  width:min(var(--max), calc(100% - 34px));
+  margin:auto;
+}
 
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      min-height: 46px;
-      padding: 0 20px;
-      border-radius: 999px;
-      background: linear-gradient(135deg, var(--blue), var(--blue-2));
-      color: #00111f;
-      font-weight: 900;
-      border: 0;
-      box-shadow: 0 14px 34px rgba(38, 151, 232, .26);
-      cursor: pointer;
-    }
+/* NAV */
 
-    .btn.secondary {
-      background: rgba(255,255,255,.06);
-      color: var(--white);
-      border: 1px solid var(--line);
-      box-shadow: none;
-    }
+.nav{
+  position:sticky;
+  top:0;
+  z-index:50;
+  backdrop-filter:blur(18px);
+  background:rgba(2,9,18,.75);
+  border-bottom:1px solid var(--line);
+}
 
-    .hero {
-      position: relative;
-      padding: 88px 0 58px;
-      overflow: hidden;
-    }
+.nav-inner{
+  min-height:76px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:20px;
+}
 
-    .hero-grid {
-      display: grid;
-      grid-template-columns: 1.02fr .98fr;
-      gap: 42px;
-      align-items: center;
-    }
+.brand{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  font-size:32px;
+  font-weight:900;
+  letter-spacing:-2px;
+}
 
-    .eyebrow {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      color: var(--blue);
-      font-weight: 900;
-      text-transform: uppercase;
-      letter-spacing: 2px;
-      font-size: 13px;
-      margin-bottom: 22px;
-    }
+.brand .oo{
+  color:var(--blue);
+}
 
-    .eyebrow::before {
-      content: "";
-      width: 44px;
-      height: 2px;
-      background: var(--blue);
-      border-radius: 999px;
-    }
+.brand small{
+  display:block;
+  font-size:10px;
+  letter-spacing:2px;
+  color:var(--muted);
+  text-transform:uppercase;
+}
 
-    h1 {
-      font-size: clamp(48px, 7.5vw, 96px);
-      line-height: .88;
-      letter-spacing: -4px;
-      text-transform: uppercase;
-      margin-bottom: 24px;
-    }
+.links{
+  display:flex;
+  gap:24px;
+  color:var(--muted);
+  font-size:14px;
+  font-weight:700;
+}
 
-    .blue { color: var(--blue); }
+.links a:hover{
+  color:var(--blue);
+}
 
-    .lead {
-      color: #d7e7f7;
-      font-size: clamp(18px, 2vw, 23px);
-      line-height: 1.55;
-      max-width: 650px;
-      margin-bottom: 28px;
-    }
+.btn{
+  min-height:48px;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  padding:0 22px;
+  border-radius:999px;
+  font-weight:900;
+  background:linear-gradient(135deg,var(--blue),var(--blue2));
+  color:#00111f;
+  box-shadow:0 14px 34px rgba(38,151,232,.28);
+}
 
-    .hero-actions { display: flex; flex-wrap: wrap; gap: 14px; margin-bottom: 32px; }
+/* HERO */
 
-    .stats {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 12px;
-    }
+.hero{
+  padding:90px 0 60px;
+}
 
-    .stat {
-      padding: 18px;
-      border-radius: 20px;
-      background: rgba(255,255,255,.055);
-      border: 1px solid var(--line);
-    }
+.hero-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:42px;
+  align-items:center;
+}
 
-    .stat strong { display: block; font-size: 28px; color: var(--blue); margin-bottom: 3px; }
-    .stat span { color: var(--muted); font-size: 13px; line-height: 1.35; }
+.eyebrow{
+  display:inline-flex;
+  align-items:center;
+  gap:12px;
+  color:var(--blue);
+  font-weight:900;
+  letter-spacing:2px;
+  text-transform:uppercase;
+  font-size:13px;
+  margin-bottom:20px;
+}
 
-    .hero-card {
-      position: relative;
-      min-height: 540px;
-      border-radius: 34px;
-      overflow: hidden;
-      background:
-        linear-gradient(115deg, rgba(1,8,16,.96) 0%, rgba(1,8,16,.62) 48%, rgba(1,8,16,.08) 100%),
-        url('boutique-stoom.jpg');
-      background-size: cover;
-      background-position: center;
-      border: 1px solid var(--line);
-      box-shadow: var(--shadow);
-    }
+.eyebrow::before{
+  content:"";
+  width:44px;
+  height:2px;
+  background:var(--blue);
+}
 
-    .hero-card::after {
-      content: "";
-      position: absolute;
-      inset: auto 22px 22px 22px;
-      height: 120px;
-      border-radius: 26px;
-      background: rgba(3, 18, 34, .74);
-      border: 1px solid var(--line);
-      backdrop-filter: blur(12px);
-    }
+h1{
+  font-size:clamp(48px,8vw,96px);
+  line-height:.88;
+  letter-spacing:-4px;
+  text-transform:uppercase;
+  margin-bottom:24px;
+}
 
-    .card-caption {
-      position: absolute;
-      left: 48px;
-      bottom: 50px;
-      right: 48px;
-      z-index: 1;
-    }
+.blue{
+  color:var(--blue);
+}
 
-    .card-caption h2 { font-size: 31px; text-transform: uppercase; letter-spacing: -1px; }
-    .card-caption p { margin-top: 8px; color: var(--muted); line-height: 1.5; }
+.lead{
+  color:#d7e7f7;
+  font-size:clamp(18px,2vw,22px);
+  line-height:1.6;
+  margin-bottom:30px;
+  max-width:650px;
+}
 
-    section { padding: 72px 0; }
-    .section-head { margin-bottom: 34px; max-width: 780px; }
-    .section-head h2 {
-      font-size: clamp(36px, 5vw, 66px);
-      text-transform: uppercase;
-      letter-spacing: -2px;
-      line-height: .94;
-      margin-bottom: 18px;
-    }
-    .section-head p { color: var(--muted); font-size: 18px; line-height: 1.65; }
+.hero-actions{
+  display:flex;
+  flex-wrap:wrap;
+  gap:14px;
+  margin-bottom:34px;
+}
 
-    .panel {
-      background: var(--panel);
-      border: 1px solid var(--line);
-      border-radius: var(--radius);
-      box-shadow: var(--shadow);
-      overflow: hidden;
-    }
+.btn.secondary{
+  background:rgba(255,255,255,.06);
+  border:1px solid var(--line);
+  color:var(--white);
+  box-shadow:none;
+}
 
-    .about-grid {
-      display: grid;
-      grid-template-columns: .92fr 1.08fr;
-      gap: 0;
-      align-items: stretch;
-    }
+.stats{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:14px;
+}
 
-    .about-text { padding: 44px; }
-    .about-text p { color: #dbe9f8; line-height: 1.7; font-size: 17px; margin-bottom: 18px; }
-    .about-visual {
-      min-height: 440px;
-      background:
-        linear-gradient(90deg, rgba(2,9,18,.75), rgba(2,9,18,.08)),
-        url('equipe-stoom.jpg');
-      background-size: cover;
-      background-position: center;
-    }
+.stat{
+  background:rgba(255,255,255,.05);
+  border:1px solid var(--line);
+  border-radius:20px;
+  padding:18px;
+}
 
-    .pill-list { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 24px; }
-    .pill {
-      padding: 10px 14px;
-      border-radius: 999px;
-      background: rgba(98,201,255,.09);
-      border: 1px solid var(--line);
-      color: #dff4ff;
-      font-weight: 800;
-      font-size: 13px;
-    }
+.stat strong{
+  display:block;
+  font-size:28px;
+  color:var(--blue);
+}
 
-    .cards {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 18px;
-    }
+.stat span{
+  color:var(--muted);
+  font-size:13px;
+  line-height:1.4;
+}
 
-    .feature {
-      padding: 28px;
-      border-radius: 24px;
-      background: var(--panel-soft);
-      border: 1px solid var(--line);
-      transition: transform .2s ease, border-color .2s ease, background .2s ease;
-    }
+.hero-card{
+  min-height:560px;
+  border-radius:34px;
+  overflow:hidden;
+  position:relative;
+  border:1px solid var(--line);
+  box-shadow:var(--shadow);
+  background:
+    linear-gradient(115deg, rgba(1,8,16,.92) 0%, rgba(1,8,16,.45) 48%, rgba(1,8,16,.04) 100%),
+    url('boutique-stoom.jpg');
+  background-size:cover;
+  background-position:center;
+}
 
-    .feature:hover { transform: translateY(-4px); border-color: rgba(98,201,255,.55); background: rgba(13, 46, 80, .78); }
-    .icon {
-      width: 54px; height: 54px;
-      border-radius: 18px;
-      display: grid; place-items: center;
-      background: rgba(98,201,255,.13);
-      color: var(--blue);
-      font-size: 26px;
-      margin-bottom: 20px;
-    }
-    .feature h3 { font-size: 20px; text-transform: uppercase; margin-bottom: 10px; }
-    .feature p { color: var(--muted); line-height: 1.6; }
+.card-caption{
+  position:absolute;
+  left:42px;
+  right:42px;
+  bottom:42px;
+  padding:24px;
+  border-radius:24px;
+  background:rgba(2,9,18,.72);
+  border:1px solid var(--line);
+  backdrop-filter:blur(12px);
+}
 
-    .split {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 22px;
-    }
+.card-caption h2{
+  font-size:30px;
+  margin-bottom:8px;
+}
 
-    .list-panel { padding: 34px; }
-    .list-panel h3 { color: var(--blue); text-transform: uppercase; margin-bottom: 20px; letter-spacing: .5px; }
-    .item {
-      display: grid;
-      grid-template-columns: 44px 1fr;
-      gap: 14px;
-      padding: 17px 0;
-      border-bottom: 1px solid var(--line);
-    }
-    .item:last-child { border-bottom: 0; }
-    .item b { display: block; margin-bottom: 5px; }
-    .item span { color: var(--muted); line-height: 1.5; }
+.card-caption p{
+  color:var(--muted);
+  line-height:1.5;
+}
 
-    .why {
-      display: grid;
-      grid-template-columns: .9fr 1.1fr;
-      gap: 24px;
-      align-items: center;
-    }
+/* GENERAL */
 
-    .why-visual {
-      min-height: 510px;
-      border-radius: var(--radius);
-      border: 1px solid var(--line);
-      background:
-        linear-gradient(0deg, rgba(2,9,18,.85), rgba(2,9,18,.14)),
-        url('interieur-stoom.jpg');
-      background-size: cover;
-      background-position: center;
-      box-shadow: var(--shadow);
-    }
+section{
+  padding:72px 0;
+}
 
-    .contact-grid {
-      display: grid;
-      grid-template-columns: 1fr .82fr;
-      gap: 22px;
-      align-items: stretch;
-    }
+.section-head{
+  margin-bottom:36px;
+  max-width:760px;
+}
 
-    .contact-card { padding: 38px; }
-    .contact-row {
-      display: grid;
-      grid-template-columns: 52px 1fr;
-      gap: 16px;
-      align-items: center;
-      padding: 17px 0;
-      border-bottom: 1px solid var(--line);
-    }
-    .contact-row:last-child { border-bottom: 0; }
-    .contact-row strong { display: block; font-size: 18px; margin-bottom: 4px; }
-    .contact-row span { color: var(--muted); line-height: 1.45; }
+.section-head h2{
+  font-size:clamp(36px,5vw,66px);
+  line-height:.95;
+  letter-spacing:-2px;
+  text-transform:uppercase;
+  margin-bottom:18px;
+}
 
-    .qrbox {
-      padding: 38px;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      gap: 16px;
-      text-align: center;
-    }
-    .qr-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
-    .qr {
-      padding: 14px;
-      border-radius: 18px;
-      background: rgba(255,255,255,.06);
-      border: 1px solid var(--line);
-    }
-    .qr img { width: 100%; aspect-ratio: 1; object-fit: contain; border-radius: 8px; background: white; padding: 5px; }
-    .qr b { display: block; margin-top: 10px; color: var(--blue); font-size: 12px; text-transform: uppercase; }
+.section-head p{
+  color:var(--muted);
+  line-height:1.7;
+  font-size:18px;
+}
 
-    .footer {
-      padding: 34px 0;
-      border-top: 1px solid var(--line);
-      color: var(--muted);
-      text-align: center;
-      font-size: 14px;
-    }
+.panel{
+  background:var(--panel);
+  border:1px solid var(--line);
+  border-radius:var(--radius);
+  overflow:hidden;
+  box-shadow:var(--shadow);
+}
 
-    .mobile-cta {
-      display: none;
-      position: fixed;
-      left: 14px;
-      right: 14px;
-      bottom: 14px;
-      z-index: 30;
-    }
-    .mobile-cta .btn { width: 100%; }
+/* ABOUT */
 
-    @media (max-width: 940px) {
-      .links { display: none; }
-      .hero { padding-top: 54px; }
-      .hero-grid, .about-grid, .split, .why, .contact-grid { grid-template-columns: 1fr; }
-      .hero-card, .about-visual, .why-visual { min-height: 390px; }
-      .cards { grid-template-columns: 1fr 1fr; }
-      .stats { grid-template-columns: 1fr; }
-      .mobile-cta { display: block; }
-      body { padding-bottom: 80px; }
-    }
+.about-grid{
+  display:grid;
+  grid-template-columns:.9fr 1.1fr;
+}
 
-    @media (max-width: 620px) {
-      .wrap { width: min(100% - 24px, var(--max)); }
-      .brand { font-size: 25px; }
-      h1 { letter-spacing: -2px; }
-      .cards, .qr-grid { grid-template-columns: 1fr; }
-      .about-text, .list-panel, .contact-card, .qrbox { padding: 25px; }
-      .hero-card { min-height: 430px; }
-      .card-caption { left: 24px; right: 24px; bottom: 42px; }
-      .card-caption h2 { font-size: 24px; }
-    }
-  </style>
+.about-text{
+  padding:44px;
+}
+
+.about-text p{
+  line-height:1.8;
+  margin-bottom:18px;
+  color:#dbe9f8;
+  font-size:17px;
+}
+
+.about-visual{
+  min-height:520px;
+  background:
+  linear-gradient(90deg, rgba(2,9,18,.65), rgba(2,9,18,.05)),
+  url('equipe-stoom.jpg');
+  background-size:cover;
+  background-position:center 18%;
+}
+
+.pill-list{
+  display:flex;
+  flex-wrap:wrap;
+  gap:12px;
+  margin-top:24px;
+}
+
+.pill{
+  padding:11px 15px;
+  border-radius:999px;
+  border:1px solid var(--line);
+  background:rgba(98,201,255,.08);
+  font-size:13px;
+  font-weight:800;
+}
+
+/* CARDS */
+
+.cards{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:18px;
+}
+
+.feature{
+  padding:28px;
+  border-radius:24px;
+  background:var(--panel2);
+  border:1px solid var(--line);
+  transition:.2s;
+}
+
+.feature:hover{
+  transform:translateY(-5px);
+  border-color:rgba(98,201,255,.55);
+}
+
+.icon{
+  width:54px;
+  height:54px;
+  border-radius:18px;
+  display:grid;
+  place-items:center;
+  background:rgba(98,201,255,.12);
+  color:var(--blue);
+  font-size:26px;
+  margin-bottom:20px;
+}
+
+.feature h3{
+  margin-bottom:10px;
+  font-size:20px;
+}
+
+.feature p{
+  color:var(--muted);
+  line-height:1.6;
+}
+
+/* SPLIT */
+
+.split{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:22px;
+}
+
+.list-panel{
+  padding:34px;
+}
+
+.list-panel h3{
+  margin-bottom:22px;
+  color:var(--blue);
+}
+
+.item{
+  display:grid;
+  grid-template-columns:54px 1fr;
+  gap:14px;
+  padding:18px 0;
+  border-bottom:1px solid var(--line);
+}
+
+.item:last-child{
+  border-bottom:0;
+}
+
+.item b{
+  display:block;
+  margin-bottom:5px;
+}
+
+.item span{
+  color:var(--muted);
+  line-height:1.5;
+}
+
+/* WHY */
+
+.why{
+  display:grid;
+  grid-template-columns:.9fr 1.1fr;
+  gap:24px;
+  align-items:center;
+}
+
+.why-visual{
+  min-height:560px;
+  border-radius:var(--radius);
+  border:1px solid var(--line);
+  box-shadow:var(--shadow);
+  background:
+  linear-gradient(0deg, rgba(2,9,18,.85), rgba(2,9,18,.14)),
+  url('interieur-stoom.jpg');
+  background-size:cover;
+  background-position:center;
+}
+
+/* CONTACT */
+
+.contact-grid{
+  display:grid;
+  grid-template-columns:1fr .9fr;
+  gap:22px;
+}
+
+.contact-card{
+  padding:38px;
+}
+
+.contact-row{
+  display:grid;
+  grid-template-columns:54px 1fr;
+  gap:14px;
+  align-items:center;
+  padding:18px 0;
+  border-bottom:1px solid var(--line);
+}
+
+.contact-row:last-child{
+  border-bottom:0;
+}
+
+.contact-row strong{
+  display:block;
+  margin-bottom:4px;
+}
+
+.contact-row span{
+  color:var(--muted);
+  line-height:1.5;
+}
+
+.qrbox{
+  padding:38px;
+}
+
+.quick-links{
+  display:flex;
+  flex-direction:column;
+  gap:14px;
+  margin-top:22px;
+}
+
+.quick-link{
+  display:flex;
+  align-items:center;
+  gap:14px;
+  padding:18px;
+  border-radius:18px;
+  background:rgba(255,255,255,.06);
+  border:1px solid var(--line);
+  transition:.2s;
+}
+
+.quick-link:hover{
+  border-color:var(--blue);
+  transform:translateY(-2px);
+}
+
+.quick-icon{
+  width:54px;
+  height:54px;
+  border-radius:16px;
+  display:grid;
+  place-items:center;
+  font-size:24px;
+  flex-shrink:0;
+}
+
+.instagram{
+  background:linear-gradient(135deg,#833ab4,#fd1d1d,#fcb045);
+}
+
+.maps{
+  background:#1f8fff;
+}
+
+.mail{
+  background:linear-gradient(135deg,var(--blue),var(--blue2));
+  color:#00111f;
+}
+
+.quick-link strong{
+  display:block;
+  margin-bottom:4px;
+}
+
+.quick-link span{
+  color:var(--muted);
+  font-size:14px;
+  line-height:1.45;
+}
+
+/* FOOTER */
+
+.footer{
+  padding:34px 0;
+  border-top:1px solid var(--line);
+  text-align:center;
+  color:var(--muted);
+  font-size:14px;
+}
+
+/* MOBILE */
+
+@media(max-width:940px){
+
+  .links{
+    display:none;
+  }
+
+  .hero-grid,
+  .about-grid,
+  .split,
+  .why,
+  .contact-grid{
+    grid-template-columns:1fr;
+  }
+
+  .cards{
+    grid-template-columns:1fr 1fr;
+  }
+
+  .stats{
+    grid-template-columns:1fr;
+  }
+
+  .hero-card{
+    min-height:430px;
+  }
+
+}
+
+@media(max-width:620px){
+
+  .cards{
+    grid-template-columns:1fr;
+  }
+
+  .wrap{
+    width:min(100% - 24px, var(--max));
+  }
+
+  h1{
+    letter-spacing:-2px;
+  }
+
+  .about-text,
+  .list-panel,
+  .contact-card,
+  .qrbox{
+    padding:24px;
+  }
+
+  .about-visual{
+    min-height:520px;
+    background-position:center top;
+  }
+
+}
+
+</style>
 </head>
+
 <body>
-  <header class="nav">
-    <div class="wrap nav-inner">
-      <a class="brand" href="#top" aria-label="Accueil STOOM">
-        st<span class="oo">oo</span>m
-        <small>Clermont-Ferrand</small>
-      </a>
-      <nav class="links" aria-label="Navigation principale">
-        <a href="#decouvrir">Découvrir</a>
-        <a href="#apprendre">Compétences</a>
-        <a href="#profil">Profil</a>
-        <a href="#pourquoi">Pourquoi STOOM</a>
-        <a href="#contact">Contact</a>
-      </nav>
-      <a class="btn" href="#contact">Candidater</a>
+
+<header class="nav">
+  <div class="wrap nav-inner">
+
+    <a class="brand" href="#top">
+      st<span class="oo">oo</span>m
+      <small>Clermont-Ferrand</small>
+    </a>
+
+    <nav class="links">
+      <a href="#decouvrir">Découvrir</a>
+      <a href="#apprendre">Compétences</a>
+      <a href="#profil">Profil</a>
+      <a href="#pourquoi">Pourquoi STOOM</a>
+      <a href="#contact">Contact</a>
+    </nav>
+
+    <a class="btn" href="#contact">
+      Candidater
+    </a>
+
+  </div>
+</header>
+
+<main id="top">
+
+<section class="hero">
+  <div class="wrap hero-grid">
+
+    <div>
+
+      <div class="eyebrow">
+        Alternance · saisonnier · commerce
+      </div>
+
+      <h1>
+        Rejoignez
+        <span class="blue">STOOM</span>
+      </h1>
+
+      <p class="lead">
+        Une expérience terrain complète dans une boutique moderne, spécialisée dans la cigarette électronique, le conseil client et l’accompagnement personnalisé.
+      </p>
+
+      <div class="hero-actions">
+        <a class="btn" href="#apprendre">
+          Découvrir la formation
+        </a>
+
+        <a class="btn secondary" href="#profil">
+          Voir le profil recherché
+        </a>
+      </div>
+
+      <div class="stats">
+
+        <div class="stat">
+          <strong>640+</strong>
+          <span>avis Google clients</span>
+        </div>
+
+        <div class="stat">
+          <strong>4,9/5</strong>
+          <span>note moyenne Google</span>
+        </div>
+
+        <div class="stat">
+          <strong>8h30–19h</strong>
+          <span>ouvert du lundi au samedi</span>
+        </div>
+
+      </div>
+
     </div>
-  </header>
 
-  <main id="top">
-    <section class="hero">
-      <div class="wrap hero-grid">
-        <div>
-          <div class="eyebrow">Alternance · saisonnier · commerce</div>
-          <h1>Rejoignez <span class="blue">STOOM</span></h1>
-          <p class="lead">Une expérience terrain complète dans une boutique moderne, spécialisée dans la cigarette électronique, le conseil client et l’accompagnement personnalisé.</p>
-          <div class="hero-actions">
-            <a class="btn" href="#apprendre">Découvrir la formation</a>
-            <a class="btn secondary" href="#profil">Voir le profil recherché</a>
-          </div>
-          <div class="stats" aria-label="Points forts STOOM">
-            <div class="stat"><strong>640+</strong><span>avis Google clients</span></div>
-            <div class="stat"><strong>4,9/5</strong><span>note moyenne Google</span></div>
-            <div class="stat"><strong>8h30–19h</strong><span>ouvert du lundi au samedi</span></div>
-          </div>
-        </div>
-        <div class="hero-card" role="img" aria-label="Boutique STOOM Clermont-Ferrand">
-          <div class="card-caption">
-            <h2>Formation · Conseil · Expérience terrain</h2>
-            <p>Un cadre professionnel pour apprendre le commerce, la relation client et la gestion quotidienne d’une boutique spécialisée.</p>
-          </div>
-        </div>
+    <div class="hero-card">
+
+      <div class="card-caption">
+        <h2>
+          Formation · Conseil · Expérience terrain
+        </h2>
+
+        <p>
+          Un cadre professionnel pour apprendre le commerce, la relation client et la gestion quotidienne d’une boutique spécialisée.
+        </p>
       </div>
-    </section>
 
-    <section id="decouvrir">
-      <div class="wrap">
-        <div class="section-head">
-          <h2>Qui <span class="blue">sommes-nous ?</span></h2>
-          <p>STOOM est une boutique spécialisée dans la cigarette électronique située à Clermont-Ferrand. Notre objectif est simple : proposer un accompagnement sérieux, humain et personnalisé à chaque client.</p>
+    </div>
+
+  </div>
+</section>
+
+<section id="decouvrir">
+
+  <div class="wrap">
+
+    <div class="section-head">
+
+      <h2>
+        Qui
+        <span class="blue">sommes-nous ?</span>
+      </h2>
+
+      <p>
+        STOOM est une boutique spécialisée dans la cigarette électronique située à Clermont-Ferrand. Notre objectif est simple : proposer un accompagnement sérieux, humain et personnalisé à chaque client.
+      </p>
+
+    </div>
+
+    <div class="panel about-grid">
+
+      <div class="about-text">
+
+        <p>
+          Chez STOOM, nous croyons qu’un bon commerce repose avant tout sur l’écoute, l’accompagnement et la confiance.
+        </p>
+
+        <p>
+          Les personnes qui nous rejoignent découvrent un métier de conseil, où chaque client a un besoin différent : choix du matériel, compréhension des produits, suivi, pédagogie et expérience client.
+        </p>
+
+        <div class="pill-list">
+
+          <span class="pill">Conseil client</span>
+          <span class="pill">Relation client</span>
+          <span class="pill">Pédagogie</span>
+          <span class="pill">Montée en compétence</span>
+          <span class="pill">Expérience terrain</span>
+
         </div>
-        <div class="panel about-grid">
-          <div class="about-text">
-            <p>Chez STOOM, nous croyons qu’un bon commerce repose avant tout sur l’écoute, l’accompagnement et la confiance.</p>
-            <p>Les personnes qui nous rejoignent découvrent un métier de conseil, où chaque client a un besoin différent : choix du matériel, compréhension des produits, suivi, pédagogie et expérience client.</p>
-            <div class="pill-list">
-              <span class="pill">Conseil client</span>
-              <span class="pill">Relation client</span>
-              <span class="pill">Pédagogie</span>
-              <span class="pill">Montée en compétence</span>
-              <span class="pill">Expérience terrain</span>
+
+      </div>
+
+      <div class="about-visual"></div>
+
+    </div>
+
+  </div>
+
+</section>
+
+<section id="apprendre">
+
+  <div class="wrap">
+
+    <div class="section-head">
+
+      <h2>
+        Ce que vous
+        <span class="blue">apprendrez</span>
+      </h2>
+
+      <p>
+        Chez STOOM, vous développez des compétences concrètes et utiles au quotidien, directement sur le terrain.
+      </p>
+
+    </div>
+
+    <div class="cards">
+
+      <article class="feature">
+        <div class="icon">🛒</div>
+        <h3>Vente & conseil client</h3>
+        <p>Comprendre les besoins des clients, conseiller les bons produits et créer une relation de confiance durable.</p>
+      </article>
+
+      <article class="feature">
+        <div class="icon">🤝</div>
+        <h3>Relation client</h3>
+        <p>Développer l’écoute, l’empathie et les techniques de communication pour offrir une expérience client exceptionnelle.</p>
+      </article>
+
+      <article class="feature">
+        <div class="icon">📈</div>
+        <h3>Développement des compétences</h3>
+        <p>Progresser chaque jour grâce à un accompagnement personnalisé.</p>
+      </article>
+
+      <article class="feature">
+        <div class="icon">🏬</div>
+        <h3>Gestion de boutique</h3>
+        <p>Découvrir la gestion des stocks, la mise en rayon et les bonnes pratiques commerciales.</p>
+      </article>
+
+      <article class="feature">
+        <div class="icon">🎓</div>
+        <h3>Connaissance produits</h3>
+        <p>Maîtriser l’univers de la cigarette électronique et ses innovations.</p>
+      </article>
+
+      <article class="feature">
+        <div class="icon">⭐</div>
+        <h3>Expérience terrain</h3>
+        <p>Mettre en pratique vos apprentissages dans une équipe dynamique et professionnelle.</p>
+      </article>
+
+    </div>
+
+  </div>
+
+</section>
+
+<section id="pourquoi">
+
+  <div class="wrap why">
+
+    <div>
+
+      <div class="section-head">
+
+        <h2>
+          Pourquoi rejoindre
+          <span class="blue">STOOM ?</span>
+        </h2>
+
+        <p>
+          Rejoindre STOOM, c’est intégrer une entreprise dynamique, humaine et passionnée.
+        </p>
+
+      </div>
+
+      <div class="panel list-panel">
+
+        <div class="item">
+          <div class="icon">👥</div>
+          <div>
+            <b>Une équipe soudée</b>
+            <span>Une ambiance conviviale basée sur l’entraide et le respect.</span>
+          </div>
+        </div>
+
+        <div class="item">
+          <div class="icon">📈</div>
+          <div>
+            <b>De vraies opportunités</b>
+            <span>Développez vos compétences et gagnez en autonomie.</span>
+          </div>
+        </div>
+
+        <div class="item">
+          <div class="icon">🎓</div>
+          <div>
+            <b>Formation & accompagnement</b>
+            <span>Un suivi personnalisé pour progresser rapidement.</span>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="why-visual"></div>
+
+  </div>
+
+</section>
+
+<section id="contact">
+
+  <div class="wrap">
+
+    <div class="section-head">
+
+      <h2>
+        Contact &
+        <span class="blue">candidature</span>
+      </h2>
+
+      <p>
+        Vous souhaitez rejoindre une équipe dynamique et développer vos compétences dans un environnement moderne et professionnel ?
+      </p>
+
+    </div>
+
+    <div class="contact-grid">
+
+      <div class="panel contact-card">
+
+        <div class="contact-row">
+          <div class="icon">📍</div>
+          <div>
+            <strong>STOOM Clermont-Ferrand</strong>
+            <span>
+              109 avenue Édouard Michelin<br>
+              63100 Clermont-Ferrand
+            </span>
+          </div>
+        </div>
+
+        <a class="contact-row" href="tel:+33660852190">
+          <div class="icon">📞</div>
+          <div>
+            <strong>06 60 85 21 90</strong>
+            <span>Appelez-nous pour échanger sur votre projet.</span>
+          </div>
+        </a>
+
+        <a class="contact-row" href="mailto:contact.boutique.clermont@gmail.com">
+          <div class="icon">✉️</div>
+          <div>
+            <strong>contact.boutique.clermont@gmail.com</strong>
+            <span>Envoyez votre candidature ou demande d’information.</span>
+          </div>
+        </a>
+
+      </div>
+
+      <div class="panel qrbox">
+
+        <h3 style="margin-bottom:8px;">
+          Accès rapide
+        </h3>
+
+        <p style="color:var(--muted); line-height:1.6;">
+          Retrouvez STOOM Clermont-Ferrand sur nos différents espaces en ligne.
+        </p>
+
+        <div class="quick-links">
+
+          <a class="quick-link"
+             href="https://www.instagram.com/stoomclermontferrand/"
+             target="_blank">
+
+            <div class="quick-icon instagram">
+              📸
             </div>
-          </div>
-          <div class="about-visual" role="img" aria-label="Équipe STOOM en boutique"></div>
-        </div>
-      </div>
-    </section>
 
-    <section id="apprendre">
-      <div class="wrap">
-        <div class="section-head">
-          <h2>Ce que vous <span class="blue">apprendrez</span></h2>
-          <p>Chez STOOM, vous développez des compétences concrètes et utiles au quotidien, directement sur le terrain.</p>
-        </div>
-        <div class="cards">
-          <article class="feature"><div class="icon">🛒</div><h3>Vente & conseil client</h3><p>Comprendre les besoins des clients, conseiller les bons produits et créer une relation de confiance durable.</p></article>
-          <article class="feature"><div class="icon">🤝</div><h3>Relation client</h3><p>Développer l’écoute, l’empathie et les techniques de communication pour offrir une expérience client exceptionnelle.</p></article>
-          <article class="feature"><div class="icon">📈</div><h3>Développement des compétences</h3><p>Progresser chaque jour grâce à un accompagnement personnalisé et des objectifs adaptés à votre évolution.</p></article>
-          <article class="feature"><div class="icon">🏬</div><h3>Gestion de boutique</h3><p>Découvrir la gestion des stocks, la mise en rayon, la tenue du point de vente et les bonnes pratiques commerciales.</p></article>
-          <article class="feature"><div class="icon">🎓</div><h3>Connaissance produits</h3><p>Maîtriser l’univers de la cigarette électronique : matériel, e-liquides, tendances et innovations.</p></article>
-          <article class="feature"><div class="icon">⭐</div><h3>Expérience terrain</h3><p>Mettre en pratique vos apprentissages au contact des clients et dans une équipe dynamique et bienveillante.</p></article>
-        </div>
-      </div>
-    </section>
-
-    <section id="profil">
-      <div class="wrap">
-        <div class="section-head">
-          <h2>Le profil <span class="blue">recherché</span></h2>
-          <p>Nous recherchons des alternants ou saisonniers motivés, curieux et désireux d’apprendre dans un environnement dynamique. Votre attitude et votre envie de progresser comptent autant que vos compétences.</p>
-        </div>
-        <div class="split">
-          <div class="panel list-panel">
-            <h3>Les qualités que nous apprécions</h3>
-            <div class="item"><div class="icon">💬</div><div><b>Aisance relationnelle</b><span>Vous aimez échanger avec les clients et les conseiller.</span></div></div>
-            <div class="item"><div class="icon">🎯</div><div><b>Motivation</b><span>Vous avez envie d’apprendre et de vous investir pleinement.</span></div></div>
-            <div class="item"><div class="icon">🛡️</div><div><b>Rigueur</b><span>Vous êtes organisé(e), attentif(ve) aux détails et fiable au quotidien.</span></div></div>
-            <div class="item"><div class="icon">💡</div><div><b>Curiosité</b><span>Vous êtes intéressé(e) par l’univers de la vape et les nouveautés.</span></div></div>
-            <div class="item"><div class="icon">🤝</div><div><b>Esprit d’équipe</b><span>Vous travaillez avec enthousiasme dans une équipe soudée.</span></div></div>
-            <div class="item"><div class="icon">📈</div><div><b>Évolution</b><span>Vous souhaitez progresser et développer vos compétences.</span></div></div>
-          </div>
-          <div class="panel list-panel">
-            <h3>Les compétences que vous développerez</h3>
-            <div class="item"><div class="icon">👥</div><div><b>Conseiller et accompagner</b><span>Identifier les besoins, guider le client et proposer des solutions adaptées.</span></div></div>
-            <div class="item"><div class="icon">🛒</div><div><b>Maîtriser la vente et la fidélisation</b><span>Construire une relation durable et professionnelle avec la clientèle.</span></div></div>
-            <div class="item"><div class="icon">📦</div><div><b>Gérer les stocks et les commandes</b><span>Participer à la vie quotidienne d’un commerce spécialisé.</span></div></div>
-            <div class="item"><div class="icon">💻</div><div><b>Utiliser les outils de gestion</b><span>Découvrir les logiciels et méthodes utilisés en boutique.</span></div></div>
-            <div class="item"><div class="icon">⭐</div><div><b>Gagner en autonomie</b><span>Être formé, accompagné et responsabilisé progressivement.</span></div></div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="pourquoi">
-      <div class="wrap why">
-        <div>
-          <div class="section-head">
-            <h2>Pourquoi rejoindre <span class="blue">STOOM ?</span></h2>
-            <p>Rejoindre STOOM, c’est intégrer une entreprise dynamique, humaine et passionnée, où chaque collaborateur compte et peut évoluer.</p>
-          </div>
-          <div class="panel list-panel">
-            <div class="item"><div class="icon">👥</div><div><b>Une équipe soudée</b><span>Une ambiance de travail conviviale, basée sur l’entraide, le respect et la bonne humeur.</span></div></div>
-            <div class="item"><div class="icon">📈</div><div><b>De vraies opportunités</b><span>Développez vos compétences, gagnez en autonomie et évoluez à votre rythme.</span></div></div>
-            <div class="item"><div class="icon">🎓</div><div><b>Formation & accompagnement</b><span>Un suivi personnalisé pour vous aider à monter en compétences et réussir votre expérience.</span></div></div>
-            <div class="item"><div class="icon">💙</div><div><b>Du sens au quotidien</b><span>Au contact des clients, vous faites la différence en proposant conseil et solutions adaptées.</span></div></div>
-          </div>
-        </div>
-        <div class="why-visual" role="img" aria-label="Intérieur moderne de la boutique STOOM"></div>
-      </div>
-    </section>
-
-    <section id="contact">
-      <div class="wrap">
-        <div class="section-head">
-          <h2>Contact & <span class="blue">candidature</span></h2>
-          <p>Vous souhaitez rejoindre une équipe dynamique et développer vos compétences dans un environnement moderne et professionnel ? Contactez-nous ou venez directement en boutique.</p>
-        </div>
-        <div class="contact-grid">
-          <div class="panel contact-card">
-            <div class="contact-row"><div class="icon">📍</div><div><strong>STOOM Clermont-Ferrand</strong><span>109 avenue Édouard Michelin<br>63100 Clermont-Ferrand</span></div></div>
-            <a class="contact-row" href="tel:+33660852190"><div class="icon">📞</div><div><strong>06 60 85 21 90</strong><span>Appelez-nous pour échanger sur votre projet.</span></div></a>
-            <a class="contact-row" href="mailto:contact.boutique.clermont@gmail.com?subject=Candidature%20STOOM%20Clermont-Ferrand"><div class="icon">✉️</div><div><strong>contact.boutique.clermont@gmail.com</strong><span>Envoyez votre candidature ou demande d’information.</span></div></a>
-            <a class="contact-row" href="https://www.instagram.com/stoomclermontferrand" target="_blank" rel="noopener"><div class="icon">📸</div><div><strong>@stoomclermontferrand</strong><span>Suivez-nous sur Instagram.</span></div></a>
-            <div class="contact-row"><div class="icon">⭐</div><div><strong>Plus de 640 avis Google</strong><span>Note moyenne : 4,9/5</span></div></div>
-          </div>
-          <div class="panel qrbox">
-            <h3>Accès rapide</h3>
-            <p style="color:var(--muted);line-height:1.55">Ajoutez ici vos QR codes Instagram, Google Maps et candidature pour une version parfaitement connectée à vos supports papier.</p>
-            <div class="qr-grid">
-              <div class="qr"><img src="qr-instagram.png" alt="QR code Instagram"><b>Instagram</b></div>
-              <div class="qr"><img src="qr-maps.png" alt="QR code Google Maps"><b>Google Maps</b></div>
-              <div class="qr"><img src="qr-candidature.png" alt="QR code candidature"><b>Candidature</b></div>
+            <div>
+              <strong>Instagram STOOM</strong>
+              <span>
+                Découvrez la boutique, les nouveautés et l’équipe.
+              </span>
             </div>
-            <a class="btn" href="mailto:contact.boutique.clermont@gmail.com?subject=Candidature%20STOOM%20Clermont-Ferrand">Envoyer une candidature</a>
-          </div>
+
+          </a>
+
+          <a class="quick-link"
+             href="https://www.google.com/maps/dir//STOOM+Cigarettes+%C3%A9lectronique+-+Clermont-Ferrand"
+             target="_blank">
+
+            <div class="quick-icon maps">
+              📍
+            </div>
+
+            <div>
+              <strong>Google Maps</strong>
+              <span>
+                Trouvez facilement la boutique STOOM Clermont-Ferrand.
+              </span>
+            </div>
+
+          </a>
+
+          <a class="quick-link"
+             href="mailto:contact.boutique.clermont@gmail.com?subject=Candidature%20STOOM">
+
+            <div class="quick-icon mail">
+              ✉️
+            </div>
+
+            <div>
+              <strong>Envoyer une candidature</strong>
+              <span>
+                Alternance, saisonnier ou demande d’informations.
+              </span>
+            </div>
+
+          </a>
+
         </div>
+
       </div>
-    </section>
-  </main>
 
-  <div class="mobile-cta"><a class="btn" href="#contact">Candidater chez STOOM</a></div>
+    </div>
 
-  <footer class="footer">
-    <div class="wrap">STOOM Clermont-Ferrand · Formation · Conseil · Expérience terrain · Chez STOOM, l’humain est au cœur de tout.</div>
-  </footer>
+  </div>
+
+</section>
+
+</main>
+
+<footer class="footer">
+  <div class="wrap">
+    STOOM Clermont-Ferrand · Formation · Conseil · Expérience terrain
+  </div>
+</footer>
+
 </body>
 </html>
